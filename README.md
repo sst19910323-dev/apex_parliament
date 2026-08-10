@@ -1,5 +1,7 @@
 **English** | [**中文**](#中文版)
 
+> ⚠️ **Temporary home.** My original GitHub account [`sst19910323`](https://github.com/sst19910323) was compromised and is currently suspended by the platform; an appeal to recover it is in progress. Until it's back, this project is temporarily synced here on my backup account. This repo and the original [`sst19910323/apex_parliament`](https://github.com/sst19910323/apex_parliament) are **the same project** — same content, same history, same author.
+
 # ⚖️ Apex Quant
 
 ### Adversarial Multi-Agent Debate Framework for Quantitative Analysis
@@ -124,6 +126,8 @@ Questions and discussion welcome: **sst19910323@gmail.com**
 ---
 
 <a id="中文版"></a>
+
+> ⚠️ **临时住所。** 我的原 GitHub 账号 [`sst19910323`](https://github.com/sst19910323) 被盗后暂被平台冻结，申诉找回中。在要回来之前，本项目临时在这个小号同步更新。本仓库与原仓库 [`sst19910323/apex_parliament`](https://github.com/sst19910323/apex_parliament) 是**同一个项目**——内容、历史、作者都相同。
 
 # ⚖️ Apex Quant — 中文
 
