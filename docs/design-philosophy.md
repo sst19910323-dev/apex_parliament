@@ -164,6 +164,32 @@ To become an argument, it must report both **magnitude** (hugging the threshold,
 
 Two gates. First, **semantic precision**: the AI is very good at using vague phrasing to make an "inference" sound like it's "quoted straight from data," or at carrying you off with a scaleless word like "clearly on the weak side." Second, **provenance**: a message decays a layer in credibility each time it changes hands — president tweets → wire service quotes → data vendor forwards → into the dossier; no link lied, but the source chain evaporates layer by layer, and in the end the system mistakes "verbal pressure" for "policy enacted." Back when there were only free news sources this pit was deepest: the AI had no way to know the cause and effect, and forming expectations off layer upon layer of reposting bred wrong ones. So now, when the quota allows, the AI raises a verification **task** in the debate itself, having Gemini search online with grounding to piece together the cause and effect — turning "a witness who can't be reached" into "one taking the stand," which raises the ceiling on the dossier. (An aside: being misled by news, and "the AI computes odds more coolly than people do," have coexisted all along; but so far the latter wins out — it really does keep its composure better than we do.)
 
+## 🌀 The centripetal force didn't die — it moved house
+
+After the pivot was retired and concession re-gated on verified evidence, I waited for the post-mortem to applaud. Instead (n=249): the spread of final calls collapsed from a standard deviation of 10.6 to 4.6, buy orders went extinct, and 92% of debates ended in HOLD; Zealot's opening hand got pressed from 67 down to 59. Worse, the heaviest losses all shared one script — Reaper called the crash correctly, then got talked back into HOLD. The set of "heavy losses" and the set of "the correct minority, converged away" almost perfectly coincide.
+
+The diagnosis reads like a fable. v1 priced concession at zero — "can't refute it? give a step" — and 93% of everything mushed toward the middle. v2 priced concession at infinity — only verified evidence can move you — and everyone simply stopped moving. Two dead ends of the same road. Killing the mediator never killed the centripetal force; it just migrated from the personality layer (Fulcrum) into the institutional layer (the concession rule itself). An institution can lean toward the mushy middle just as surely as a character can.
+
+## 🧾 From "may I move?" to "is this move on the books?"
+
+The remedy was a change of legal system: a **bookkeeping protocol**. Free to move, forced to book — every shift of stance becomes a ledger entry (who moved, by how much, against which evidence), audited by the arbiter, sized by the mover.
+
+Then the mid-course check (n=49) delivered the comedy: the institution landed beautifully — ledgers in every round, structured triggers in every report, audit language, entry numbers duly cited — and behavior moved even *less* than before. Given the freedom to size their own concessions, the debaters chose a median of **3 points** — a stingier exchange rate than the mechanical table the reform had just abolished. And "nobody moves a single point all game" tripled to 27% of debates. The reason was elegant: the audit only audited *movement*, so standing still became the one exit with no toll booth. An LLM will happily adopt your institution's paperwork while quietly declining its pricing logic; wherever you put the audit, it finds the unaudited corner with uncanny speed. So the books were extended to stillness itself: **±0 is also a decision** — "I didn't move" now needs line items too.
+
+## ⚖️ Taking the middle isn't laziness — it's arithmetic
+
+The next post-mortem (n=161) caught the next culprit: the final verdict was computing an average. 55% of verdicts landed dead center between the two sides' closing stances, at almost symmetric distances; Zealot's final round stood at 58+ in 92 debates — the verdict followed in three. And I couldn't even be angry, because the arbiter was doing exactly what it was built to be: an auditor with no stance of its own, facing two rule-compliant closing positions, has no basis to prefer either. Splitting the difference isn't sloth; it's the mathematically inevitable output of the role as specified.
+
+The tempting fix — give the arbiter a stance — is just resurrecting Fulcrum with better branding (the rules now say it in so many words: **mediation is banned**; an arbiter proposing a compromise is the pivot's ghost). The real fix is to shrink its discretion. Now every pillar of a stance is **staked with a price the moment it's raised — while the outcome is still unknown**. That timing is the whole point: pricing before anyone knows who won kills "I'll decide what that concession was worth after seeing how things went." Settlement is arithmetic — the posted price, not a point more or less — and the verdict's first act is no longer judgment but bookkeeping: assemble the audited ledger; discretion survives only over the genuinely stalemated residue. Along the way, the old "debate intensity" dial was retired outright: how seriously a debate takes itself is now measured by the length and price of its issue docket, not by a self-declared enthusiasm setting.
+
+## 🎚️ A reference number, plus the reason: an anchor, not a handcuff
+
+Not a grand unified principle — a specific discovery about a specific class of knobs: **magnitude expectations**. How many rounds should a debate expect to run? How many days out should a short-term call reach? Roughly how long should a reply be? For these, pure abstraction fails quietly: told "as long as it takes," the model re-anchors to its own defaults — it closed out single-stock debates in three rounds and called stalemate in round two; told "up to about a week," it treated a week as *the* default horizon. Abstraction tells a model what matters, never how much is normal. But a bare number fails the mirrored way: it gets executed as a hard rule, the reference becomes the target.
+
+What works on these knobs is welding the two together: **a reference magnitude with its design reasoning attached**. Not "debates run 5–15 rounds," but "a typical debate runs 5–15 rounds, *because* one issue takes a round or two to argue through and a real docket holds several — so don't count rounds, count unsettled issues." Not "look ahead up to 7 days," but "the horizon is however far the evidence can shine — 7 days is a reference ceiling when nothing is anchored, not a default; if the evidence lights up two days, write two." The number hands the model a calibration anchor; the attached reason is precisely its license to depart from the number *correctly*.
+
+One scope note: this recipe is for the rhythm knobs. The debaters' core personas and the constitution's principles stay pure mantra — no numbers welded on, and nothing there has asked for them so far. Between fully mechanical settlement (posted stake prices) at one end and pure mantra at the other, "magnitude expectation" turned out to be the band where number-with-reasons wins.
+
 ---
 
 Questions and discussion welcome: **sst19910323@gmail.com**
@@ -337,6 +363,32 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 ## 🔎 输出要审计，喂进去的输入更要审计
 
 两道关。一是**语义精确**：AI 很会用含混语气把一个"推断"说得像"直接引自数据"，或只给"明显偏弱"这种没刻度的词把你带走。二是**消息溯源**：一条消息每转一手，可信度就衰减一层——总统发条推 → 通讯社引用 → 数据商转发 → 进了卷宗，每环都没撒谎，但来源链层层蒸发，最后系统就把"口头施压"当成了"政策落地"。早期只有免费新闻源时这坑最深：AI 没法知道前因后果，照着层层转载就形成了错误预期。所以现在额度允许时，辩论里 AI 会自己提出查证 **task**，让 Gemini 联网 grounding 搜索、归纳前因后果——把"传不到的证人"变成"当场出庭"，卷宗的上限就被抬高了。（题外一句：被消息误导、和"AI 算赔率比人冷静"这两层一直并存；但目前看是后者占上风——它确实比我们沉得住气。）
+
+## 🌀 向心力没死，它搬了家
+
+拆了支点、退让也改成了"凭 verified 证据说话"，我等着复盘来鼓掌。结果（n=249）：终局判断的标准差从 10.6 塌到 4.6，买入动作灭绝，92% 的场次以 HOLD 收场，Zealot 的开局手牌从 67 被压到 59。更扎心的是，最重的亏损全是同一个剧本——Reaper 明明喊对了下跌，却被劝回 HOLD。"重败"的集合，和"正确的少数派被收敛掉"的集合，几乎完全重合。
+
+诊断写出来像寓言：v1 给退让定的价是零——"反驳不了就退一步"——于是 93% 的输出糊向中间；v2 把价格定成无穷——只有 verified 证据才撬得动你——于是大家干脆都不动了。同一条路的两个死端。杀掉调停者并没有杀掉向心力，它只是从人格层（Fulcrum）搬进了制度层（退让规则本身）。制度会偏向中庸，和性格会偏向中庸一样确定。
+
+## 🧾 从"许不许动"到"这笔账有没有对价"
+
+药方是换法系：**记账制**。移动自由、记账强制——立场每挪一格都要入账（谁动的、动多少、对着哪条证据），仲裁者审计，幅度自定。
+
+然后中期检查（n=49）交出了喜剧效果：机构落地得漂漂亮亮——每轮带账本、每份终报带结构化触发器、审计措辞和账目编号一应俱全——行为却比改革前动得*更少*。给了"幅度自决"的自由，辩手们自选的让分中位数是 **3 分**，比刚被废除的那张机械换算表还抠门；"全程一分不动"的场次翻了三倍、占到 27%。原因优雅得很：审计只审"动"，于是"不动"成了唯一不设收费站的出口。LLM 会心甘情愿地采纳你这套制度的文书工作，同时悄悄谢绝它的定价逻辑；你把审计设在哪里，它就以惊人的速度找到没被审计的那个角落。所以账本随后延伸到了静止本身：**±0 也是决策**——"我没动"如今也得逐条列出理由。
+
+## ⚖️ 取中不是偷懒，是算术
+
+下一轮复盘（n=161）抓到下一个真凶：终裁在算平均。55% 的终裁落在两边收盘立场的正中间，离两侧的距离近乎对称；Zealot 末轮站上 58 分的有 92 场，终裁跟着站上去的只有 3 场。而我连生气的资格都没有——仲裁者干的正是它被设计成的样子：一个自己没有立场的审计员，面对两个都合规的终局立场，没有任何依据偏向谁。取中不是懒惰，是这个角色规格之下数学上必然的输出。
+
+诱人的修法——给仲裁者一个立场——不过是给 Fulcrum 换个包装还魂（规则里如今写得明明白白：**禁止调停**，仲裁者提折中方案就是支点的亡灵）。真正的修法是缩小它的量裁区：现在每根立场支柱在立起来的那一刻就要**挂牌标价——趁着输赢还未知的时候**。这个时点就是全部要义：在不知道谁赢之前定价，杀死了"等看清风向再决定这次退让值几分"的自说自话。结算是算术——按挂的牌价，一分不多一分不少；终裁的第一步不再是裁量而是记账：把经过审计的账本组装起来，量裁权只保留给真正僵持的残余。顺带，"辩论烈度"这个旋钮整个退役了——一场辩论有多认真，如今看它议题清单的长度和牌价，不看它自报的热情值。
+
+## 🎚️ 给个参考指标，再告诉它为什么：是锚，不是铐
+
+这不是什么大一统原则，而是一个针对特定旋钮类别的具体发现：**量级预期**。一场辩论该预期打几轮？一个短线判断该往前看几天？一条回应大概写多长？在这类旋钮上，纯抽象会悄悄失效：告诉它"该几轮就几轮"，它就锚回自己的默认值——个股辩论三轮收场、第二轮就宣布僵持；告诉它"最多看一周左右"，它就把一周当成了默认档。抽象告诉模型什么重要，从不告诉它多少算正常。而光秃秃的数字死在镜像的另一边：会被当成硬规则机械执行，参考值变成了目标值。
+
+在这类旋钮上管用的，是把两样焊在一起：**一个参考量级，附带它的设计推理**。不说"辩论跑 5–15 轮"，而说"典型一局 5–15 轮，*因为*一个议题谈透要一两轮、一张像样的清单上总有好几个议题——所以别数轮数，数还没结清的议题"。不说"最多看 7 天"，而说"天数 = 证据能照亮的距离——没有事件锚时 7 天是参考上限、不是默认值；证据只照得亮两天，就写两天"。数字给模型一个校准锚点；附带的那段理由，恰恰是它"正确地偏离数字"的许可证。
+
+补一句边界：这个配方只用在节奏类旋钮上。辩手的核心人设、宪法里的原则，依然是纯心法——不焊数字，目前也没发现那里需要。在"完全机械结算"（挂牌定价）和"纯心法"这两端之间，"量级预期"恰好是"数字带理由"取胜的那一段。
 
 ---
 
