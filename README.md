@@ -45,7 +45,19 @@ Apex Quant is an LLM-based multi-agent framework for quantitative analysis. Befo
 2. **Opening positions** — Zealot and Reaper each form an independent judgment, with no communication.
 3. **Debate rounds** — multi-round argument under the constitution. Each round may fire **directed evidence** requests at the opponent's specific claim; the Arbiter dispatches Scouts and stamps every result `verified` / `unverified` / `not-found`, shared with both sides. **Concession is gated on *verified* evidence** — an unfalsifiable "there's risk" no longer extorts a step back.
 4. **Verdict** — a 0–100 **confidence dial** (0 = extreme bearish, 50 = neutral, 100 = extreme bullish — *not* a buy/sell instruction) alongside actual execution (BUY / HOLD / SELL + sizing + entry/stop) and a decoupled **short-term** tactical view. Both advocates attach their dissent.
-5. **Postcheck — the "BP" loop.** Days later, each call is scored against real prices (**0 = whiff / 50 = miss / 100 = hit**), reviewed by a single **reckoner** agent, abstracted into recurring failure modes, and fed back to refine prompts and architecture. BP = **backpropagation**: the system is trained by its own post-mortems. (Removing Fulcrum and rewriting the Bayesian rule were BP's first big updates.)
+5. **Postcheck.** Days later, each call is scored against real prices (**0 = whiff / 50 = miss / 100 = hit**) — feeding the **BP** self-improvement loop described next.
+
+---
+
+## 🧠 A system trained by its own hindsight (BP)
+
+Producing a good call is half the framework. The other half — the part that makes it *improve* — is the **BP loop**, and it's a pillar in its own right.
+
+Here's why it has to exist. Early on, the system's mistakes were the naive kind — chasing pumps, dumping on dips — and **I could spot them by eye**. As it got better, the errors turned subtle enough that only the **strongest models of the day (Claude, Gemini) could catch them**. Then it crossed a line: **no model can reliably tell, *in advance*, whether a given call is insight or accident.** The only judge left is **ground truth** — what the market actually did afterward. And once the debate is wired to live search, you **can't backtest**: there's no way to reconstruct the web as it was N days ago. History can't be replayed; it can only be run forward and graded later.
+
+That's the whole reason for BP. Every debate is archived; days later the **postcheck** scores each call against real prices (0 whiff / 50 miss / 100 hit) and a **reckoner** agent reviews it — given only what was knowable at the time, was this a real analytical miss, or just the odds? Across many reviews, recurring failures are abstracted into common problems, and those become edits to the constitution and the architecture.
+
+BP = **backpropagation**: the debate is the forward pass, the postcheck is the error against the real label, the review distills it into a "gradient" (a lesson, not a number), and rewriting the rules is the weight update (the constitution, not a matrix). Retiring the Fulcrum damper and re-gating the Bayesian rule were the first big updates this loop produced — decided not on a hunch but on **n=56 of the system's own measured history**. That measurement is published as the [v1 send-off report](docs/v1-send-off.md).
 
 ---
 
@@ -60,7 +72,7 @@ All state now lives in **PostgreSQL** — technicals, news, reports, economic in
 | Macro & company fundamentals | increasingly **agent-searched** (Alpha Vantage / a PG cache remain as fallback) |
 | Market sentiment (Fear & Greed / VIX) | **per region** — CNN Fear & Greed for the US, with regional equivalents for EU / JP / KR |
 
-**Three runners, one architecture.** The same debate-and-postcheck logic runs in three variants: an **API version** (DeepSeek for the agents + Linkup or Gemini grounding for search), a **Claude Code version**, and a **GPT Codex version**. In practice AI still rewards raw power — my self-built DeepSeek + Linkup search turned out *far* worse than Claude / GPT with **native search**. So the CC and Codex versions are now the main runners (the API version is kept as a fallback), and it isn't only data-fetching that leans on agent search — the **core debate and postcheck themselves** run on the agents.
+**Three runners, one architecture.** The same debate-and-postcheck logic runs in three variants — an **API version** (DeepSeek + Linkup / Gemini grounding), a **Claude Code version**, and a **GPT Codex version** — because in practice AI still rewards raw power: my self-built DeepSeek + Linkup search turned out *far* worse than Claude / GPT with **native search**. Right now the **GPT Codex version is the workhorse** (driven off a $200/month plan), the Claude Code version is secondary, and the **API version is shelved** for the moment. And it isn't only data-fetching that leans on agent search — the **core debate and postcheck themselves** run on the agents. (Going all-in on agents has a cost: the code is currently scattered across pieces, and I'm mid-consolidation — part of why it isn't published here yet.)
 
 **Agent-native "deployment."** There's no `git clone && deploy` anymore: you **hand the repo to Claude Code or GPT Codex and let it set everything up**. Orchestration runs through agents — a **Hermes** heartbeat wakes Claude Code on schedule; a parallel **GPT Codex** dispatch path exists; and the debate / postcheck skills can copy themselves from the server onto a fresh machine. This edition leans on agents by design, which is also why it's less of a turnkey repo than v1 was.
 
@@ -97,6 +109,7 @@ The transferable part of this project isn't the code — it's what the work *tau
 
 The original edition — three debaters (Zealot / Reaper / **Fulcrum**) + a separate Chronicler, with everything on disk as JSON / CSV — is preserved for reference:
 
+- [**v1 send-off**](docs/v1-send-off.md) — a data-driven farewell: the pre-BP postcheck (n=56) of the three-debater parliament, and the numbers that sent it to v2
 - [`README-v1.md`](README-v1.md) — the full v1 README (data schema, DAG scheduler, examples, etc.)
 - [`v1` branch](../../tree/v1) — the frozen v1 codebase
 
@@ -168,7 +181,19 @@ Apex Quant 是一个基于大语言模型的多智能体量化分析框架。在
 2. **开局立场** —— Zealot 与 Reaper 各自独立判断，互不通气。
 3. **多轮辩论** —— 在宪法约束下多轮交锋。每轮可对对方的具体主张发起**定向取证**；仲裁者派 Scout、给每条结果盖 `verified` / `unverified` / `not-found` 并三方共享。**退让以 *verified* 证据为门槛** —— 一个不可证伪的"有风险"再也讹不到退让。
 4. **裁决** —— 一个 0–100 的**信心刻度**（0 极空、50 中性、100 极多 —— *不是*买卖指令）+ 实际执行（BUY / HOLD / SELL + 仓位 + 入场/止损）+ 一个解耦的**短线**战术视图；两位辩手各自附上异议。
-5. **后验 —— "BP" 闭环。** 若干天后，用真实价格给每次判断打分（**0 踩空 / 50 错过 / 100 踩中**），由单个 **reckoner（清算者）** 复盘、抽象成共性失误、反馈回去调 prompt 与架构。BP = **反向传播**：系统是被自己的复盘"训练"出来的。（拆 Fulcrum、改贝叶斯，就是 BP 跑出来的头两个大更新。）
+5. **后验（Postcheck）。** 若干天后用真实价格给每次判断打分（**0 踩空 / 50 错过 / 100 踩中**）—— 喂给下面要讲的 **BP** 自我改进闭环。
+
+---
+
+## 🧠 一套被自己"事后诸葛"训练的系统（BP）
+
+给出一个好判断只是这框架的一半。另一半 —— 让它**自我改进**的那一半 —— 是 **BP 闭环**，它本身就是一根支柱。
+
+为什么非有它不可：早期系统犯的是幼稚错误 —— 追涨杀跌 —— **我肉眼就能看出来**。它变强之后，错误越来越微妙，只有**当时最强的模型（Claude、Gemini）才抓得住**。再往后就越过一条线：**没有任何模型能*事先*可靠地分辨，一次判断到底是洞见还是事故。** 唯一还能当裁判的，是 **ground truth** —— 事后市场真正怎么走。更何况，一旦辩论接了实时搜索，就**没法回测**了：你无法还原 N 天前那一刻的网络。历史重放不了，只能正向跑一遍、事后再打分。
+
+这就是 BP 的全部理由。每场辩论都落盘；若干天后**后验**用真实价格给每次判断打分（0 踩空 / 50 错过 / 100 踩中），再由 **reckoner（清算者）**复盘 —— 就当时能知道的信息，这是真正的分析失误，还是本就属于赔率？反复出现的失误被抽象成共性问题，再变成对宪法与架构的修改。
+
+BP = **反向传播**：辩论是前向推理，后验是对真实标签算误差，复盘把它提炼成"梯度"（一条教训，不是数字），改规则就是更新权重（那部宪法，不是矩阵）。退役 Fulcrum、给贝叶斯重设门槛，就是这个闭环跑出的头两个大更新 —— 不靠拍脑袋，靠系统自己 **n=56** 的实测历史。那次实测已作为 [v1 送别报告](docs/v1-send-off.md) 公开。
 
 ---
 
@@ -183,7 +208,7 @@ Apex Quant 是一个基于大语言模型的多智能体量化分析框架。在
 | 宏观与公司基本面 | 越来越靠 **agent 搜索**（Alpha Vantage / PG 缓存留作兜底） |
 | 市场情绪（Fear & Greed / VIX） | **分区** —— 美股用 CNN Fear & Greed，欧 / 日 / 韩各有对应的区域指标 |
 
-**三个运行版本，同一套架构。** 同一套"辩论 + 后验"逻辑跑在三个版本里：**API 版**（agent 用 DeepSeek、搜索用 Linkup 或 Gemini grounding）、**Claude Code 版**、**GPT Codex 版**。实践下来 AI 到底还是讲究"力大砖飞"—— 我自己搭的 DeepSeek + Linkup 搜索，比 Claude / GPT 的**原生搜索**差很多。所以如今主力是 CC 版和 Codex 版（API 版留作兜底）；而且不只是取数靠 agent 搜索，**核心的辩论与后验本身也跑在 agent 上**。
+**三个运行版本，同一套架构。** 同一套"辩论 + 后验"逻辑跑在三个版本里 —— **API 版**（agent 用 DeepSeek、搜索用 Linkup 或 Gemini grounding）、**Claude Code 版**、**GPT Codex 版** —— 因为实践下来 AI 到底还是讲究"力大砖飞"：我自己搭的 DeepSeek + Linkup 搜索，比 Claude / GPT 的**原生搜索**差很多。眼下 **GPT Codex 版是主力**（用一个 200 刀/月的套餐驱动），Claude Code 版次之，**API 版暂时搁置**。而且不只是取数靠 agent 搜索，**核心的辩论与后验本身也跑在 agent 上**。（全面押注 agent 也有代价：代码现在东一块西一块，我正在整合 —— 这也是它暂未在此公开的部分原因。）
 
 **agent 原生的"部署"。** 不再是 `git clone && 部署`：而是**把仓库交给 Claude Code 或 GPT Codex，让它自己把一切装好**。编排交给 agent —— 一个 **Hermes** 心跳按点唤醒 Claude Code；另有一条并行的 **GPT Codex** 通路；辩论 / 后验的 skill 还能从服务器自拷到一台新机器。这一版从设计上就重度依赖 agent，这也是它不像 v1 那样开箱即用的原因。
 
@@ -211,6 +236,7 @@ Apex Quant 是一个基于大语言模型的多智能体量化分析框架。在
 
 最初那一版 —— 三辩手（Zealot / Reaper / **Fulcrum**）+ 独立史官，一切以 JSON / CSV 落盘 —— 已保留备查：
 
+- [**v1 送别**](docs/v1-send-off.md) —— 一次数据驱动的谢幕：三辩手议会 pre-BP 的后验（n=56），以及把它送往 v2 的那些数字
 - [`README-v1.md`](README-v1.md) —— 完整的 v1 README（数据 schema、DAG 调度、示例等）
 - [`v1` 分支](../../tree/v1) —— 冻结的 v1 代码
 

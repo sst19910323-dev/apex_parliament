@@ -1,4 +1,4 @@
-> 🗄️ **Archived — v1 (file-based edition).** This is the original three-debater, on-disk (JSON/CSV) design. The current edition is **v2** — see [**README.md**](README.md). This snapshot is also frozen on the [`v1` branch](../../tree/v1).
+> 🗄️ **Archived — v1 (file-based edition).** This is the original three-debater, on-disk (JSON/CSV) design. The current edition is **v2** — see [**README.md**](README.md). This snapshot is also frozen on the [`v1` branch](../../tree/v1). For a data-driven farewell to this edition, see the [**v1 send-off**](docs/v1-send-off.md).
 
 ---
 
