@@ -57,7 +57,7 @@ Here's why it has to exist. Early on, the system's mistakes were the naive kind 
 
 That's the whole reason for BP. Every debate is archived; days later the **postcheck** scores each call against real prices (0 whiff / 50 miss / 100 hit) and a **reckoner** agent reviews it — given only what was knowable at the time, was this a real analytical miss, or just the odds? Across many reviews, recurring failures are abstracted into common problems, and those become edits to the constitution and the architecture.
 
-BP = **backpropagation**: the debate is the forward pass, the postcheck is the error against the real label, the review distills it into a "gradient" (a lesson, not a number), and rewriting the rules is the weight update (the constitution, not a matrix). Retiring the Fulcrum damper and re-gating the Bayesian rule were the first big updates this loop produced — decided not on a hunch but on **n=56 of the system's own measured history**. That measurement is published as the [v1 send-off report](docs/v1-send-off.md).
+BP = **backpropagation**: the debate is the forward pass, the postcheck is the error against the real label, the review distills it into a "gradient" (a lesson, not a number), and rewriting the rules is the weight update (the constitution, not a matrix). Retiring the Fulcrum damper and re-gating the Bayesian rule were the first big updates this loop produced — decided not on a hunch but on **n=56 of the system's own measured history** (since backfilled to n=158, the conclusion unchanged). That measurement is published as the [v1 send-off report](docs/v1-send-off.md).
 
 ---
 
@@ -109,7 +109,7 @@ The transferable part of this project isn't the code — it's what the work *tau
 
 The original edition — three debaters (Zealot / Reaper / **Fulcrum**) + a separate Chronicler, with everything on disk as JSON / CSV — is preserved for reference:
 
-- [**v1 send-off**](docs/v1-send-off.md) — a data-driven farewell: the pre-BP postcheck (n=56) of the three-debater parliament, and the numbers that sent it to v2
+- [**v1 send-off**](docs/v1-send-off.md) — a data-driven farewell: the full-sample postcheck (n=158) of the three-debater parliament, and the numbers that sent it to v2
 - [`README-v1.md`](README-v1.md) — the full v1 README (data schema, DAG scheduler, examples, etc.)
 - [`v1` branch](../../tree/v1) — the frozen v1 codebase
 
@@ -193,7 +193,7 @@ Apex Quant 是一个基于大语言模型的多智能体量化分析框架。在
 
 这就是 BP 的全部理由。每场辩论都落盘；若干天后**后验**用真实价格给每次判断打分（0 踩空 / 50 错过 / 100 踩中），再由 **reckoner（清算者）**复盘 —— 就当时能知道的信息，这是真正的分析失误，还是本就属于赔率？反复出现的失误被抽象成共性问题，再变成对宪法与架构的修改。
 
-BP = **反向传播**：辩论是前向推理，后验是对真实标签算误差，复盘把它提炼成"梯度"（一条教训，不是数字），改规则就是更新权重（那部宪法，不是矩阵）。退役 Fulcrum、给贝叶斯重设门槛，就是这个闭环跑出的头两个大更新 —— 不靠拍脑袋，靠系统自己 **n=56** 的实测历史。那次实测已作为 [v1 送别报告](docs/v1-send-off.md) 公开。
+BP = **反向传播**：辩论是前向推理，后验是对真实标签算误差，复盘把它提炼成"梯度"（一条教训，不是数字），改规则就是更新权重（那部宪法，不是矩阵）。退役 Fulcrum、给贝叶斯重设门槛，就是这个闭环跑出的头两个大更新 —— 不靠拍脑袋，靠系统自己 **n=56** 的实测历史（后来补跑扩到 n=158，结论不变）。那次实测已作为 [v1 送别报告](docs/v1-send-off.md) 公开。
 
 ---
 
@@ -236,7 +236,7 @@ BP = **反向传播**：辩论是前向推理，后验是对真实标签算误�
 
 最初那一版 —— 三辩手（Zealot / Reaper / **Fulcrum**）+ 独立史官，一切以 JSON / CSV 落盘 —— 已保留备查：
 
-- [**v1 送别**](docs/v1-send-off.md) —— 一次数据驱动的谢幕：三辩手议会 pre-BP 的后验（n=56），以及把它送往 v2 的那些数字
+- [**v1 送别**](docs/v1-send-off.md) —— 一次数据驱动的谢幕：三辩手议会的全样本后验（n=158），以及把它送往 v2 的那些数字
 - [`README-v1.md`](README-v1.md) —— 完整的 v1 README（数据 schema、DAG 调度、示例等）
 - [`v1` 分支](../../tree/v1) —— 冻结的 v1 代码
 
