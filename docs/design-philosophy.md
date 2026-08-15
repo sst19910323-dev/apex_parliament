@@ -192,9 +192,11 @@ One scope note: this recipe is for the rhythm knobs. The debaters' core personas
 
 ## 🥋 Mantra and move: two layers, finally pulled apart
 
-For a long time the constitution was one thing: pure mantra (see Cyber-Boxers above). Then some knobs turned out to need a reference number with its reason (the anchor-not-handcuff note). Pushing that far enough, the real shape finally showed: **nearly every rule — from the debate as a whole down to the per-round mechanics — needs two things at once.** A **mantra** (心法): the highly abstract principle, stating what matters and why, carrying no numbers, so it transfers across markets. And a **move** (招式): the concrete technique — a reference procedure, a worked explanation, the thresholds — so the model actually knows how to execute it.
+At the start the model was formless — pure chaos. The first handle I reached for was **mantra** (心法): a set of abstract inner principles, meant to *rouse* it rather than instruct it. It worked — somewhat. But the output was unstable, and the reason is baked into what an LLM is: it half-consciously blurts tokens, it can't sit and reason out a complex model on demand, and any single run is a coin toss — a masterpiece one time, a wreck the next.
 
-The mistake was keeping them in one blob. Mixed together, the mantra picks up numbers and decays into a patch-list, while the move loses its rationale and gets run as a dead rule. So this update **pulls the two apart into separate layers**: the mantra stays pure mantra; the move carries the flow and the thresholds (and, per the note above, every number in it travels with its reason). Same rule, two registers — the soul and the drill, no longer stepping on each other.
+The correction came gradually, and it started from the concrete end — things like *how many rounds a debate should run*. Letting the model decide entirely on its own didn't work either. What it needed was a **move** (招式): a reference procedure and reference numbers to consult — explicitly flagged *for reference*, and annotated with *why* each number sits where it does. That rationale is the whole trick (see the anchor-not-handcuff note above): it hands the model an anchor without letting the anchor become a handcuff.
+
+So the real shape is two layers, and nearly every rule — from the debate as a whole down to the per-round mechanics — needs both: a pure **mantra** (what matters and why, no numbers, transferable across markets) and a concrete **move** (the reference flow, the thresholds, each carrying its reason). The old mistake was keeping them in one blob — mixed, the mantra picks up numbers and rots into a patch-list, while the move loses its reasoning and gets run as a dead rule. This update **pulls the two apart into separate layers**: the soul and the drill, no longer stepping on each other.
 
 (That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms. Just finished the separation; testing it next week.)
 
@@ -400,9 +402,11 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 
 ## 🥋 心法与招式：终于把两层彻底分开
 
-很长一段时间，宪法只有一样东西：纯心法（见上面的「赛博义和团」）。后来发现有些旋钮得配一个"带理由的参考数字"（见「是锚不是铐」那条）。把这条推到底，真正的形状才显出来：**几乎每一条规则——从整场辩论到每一轮的机制——都同时需要两样东西。** 一样是**心法**：高度抽象的原则，只讲什么重要、为什么，不带数字，所以能跨市场迁移。另一样是**招式**：具体的技术——一套参考流程、一段讲透的解释、几个阈值——好让模型真的知道怎么执行。
+一开始，模型是混沌一片。我伸手去够的第一个把手是**心法**：一套抽象的内功原则，想的是*激发*它、而不是命令它。有效——但只有几分。它的发挥很不稳定，根子就在 LLM 的本性里：它是半下意识地往外蹦字，没法当场坐下来推演一个复杂模型，任何一次单独发挥都像抛硬币——这次神作、下次翻车。
 
-过去的毛病是把这两样揉成一坨：心法沾上数字、退化成补丁清单；招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**——心法归心法，保持纯粹；招式归招式，承载流程和阈值（而且照上一条，招式里的每个数字都带着它的理由一起走）。同一条规则，两种笔法，不再互相踩脚。
+纠偏是慢慢来的，而且是从最具体的那头起步——比如*一场辩论该打几轮*。可完全让它自己拿主意，也不行。它需要的是**招式**：一套供它参考的流程和数值——明确标注"仅供参考",并注明*为什么*这个数字设在这儿。那段理由才是关键（见上面「是锚不是铐」）：给模型一个锚，又不让这个锚变成铐。
+
+于是真正的形状是两层，几乎每条规则——从整场辩论到每一轮的机制——都同时需要：一层纯**心法**（讲什么重要、为什么，不带数字，能跨市场迁移），一层具体**招式**（参考流程、阈值，每个都带着它的理由）。过去的毛病是把两样揉成一坨——揉在一起，心法沾上数字、退化成补丁清单，招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**：心法与招式，不再互相踩脚。
 
 （这正是两个词的武学本义：心法是内功心诀，招式是外在招法。这次刚把分离做完，下周试。）
 
