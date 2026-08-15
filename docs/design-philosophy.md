@@ -64,7 +64,7 @@ The original idea was: **"if you can't fully refute it, you must partially conce
 
 But once the models got smart and search was wired in, the old rule became an **obstacle** — because "can't refute" no longer means "the other side is right"; it may just mean "I can't look it up right now." So it fed two bad habits at once: **mindless HOLD** (neither side can refute the other, so both concede a step back to the mushy middle) and **contrarian trolling** (lob out inherently unfalsifiable risk claims — you can't refute them anyway, so I pocket a free concession). Bear arguments are inherently harder to falsify, so the rule was also structurally bearish.
 
-Now, with online evidence, it's been changed to a new mode: concession's precondition is no longer "I have nothing on hand" but "**already verified in a directed way, and failed to overturn.**" Only `verified` evidence has standing to demand a concession; a bare, unbacked cry of "risk" extorts nobody. The line isn't drawn at "how much to concede" but at "**who has standing to demand it**" — with proof you must yield (no stonewalling), without proof you can't extort (no mindless middle).
+Now, with online evidence, it's been changed to a new mode: concession's precondition is no longer "I have nothing on hand" but "**already verified in a directed way, and failed to overturn.**" Only `verified` evidence has standing to demand a concession; a bare, unbacked cry of "risk" extorts nobody. The line isn't drawn at "how much to concede" but at "**who has standing to demand it**" — with proof you must yield (no stonewalling), without proof you can't extort (no mindless middle). *(This "standing" regime, too, later proved over-tightened — see 🌀 below for how, and what replaced it.)*
 
 ## ⏰ From a fixed alarm clock to a (still-in-progress) dynamic rhythm
 
@@ -120,13 +120,9 @@ Hence the rewards and penalties: **getting the direction backwards is the real e
 
 ## 🔁 The post-mortem: not "right or wrong," but "could it have known at the time?"
 
-In a debate, an evidence officer handles verification; the post-mortem relies on search in the same way, only after the fact. It runs in steps. First, read the outcome from simple quantitative data: at fixed horizons (3 days, 20 days), how did the price actually move? Then, taking the report from the time and the operation it called, assign a 0–100 score: 0 for a wrong-direction call, 50 for a missed opportunity (read correct, not acted on), 100 for a hit.
+In a debate, Scouts handle verification; the post-mortem leans on search the same way, only after the fact. The flow now runs in four steps. **Step one, check the lines**: has it been hitting lines it shouldn't — you can't keep slamming into the stop-loss line, for instance; the pattern of line-hits is itself a medical chart. **Step two, composite scoring**: at fixed horizons (3 days, 20 days), read how the price actually moved, and score the report and the operation it called 0–100 as a base (0 for a wrong-direction call, 50 for a miss — read correct, not acted on — 100 for a hit); then fold the line-hits, the short-term directional call, and the reasoning it gave into one overall grade. **Step three, deep-read by default**: unless the call landed square, go back and re-read the original data and searches from the time — this flipped from the early "review only on error" to "**only a clean hit earns an exemption**." **Step four, attribution**, in three bins: a **black swan** — unknowable from the information available then, not its fault, that belongs to the odds; a **weak signal** — the clue was in the dossier, faint but there: half the fault; an **analysis failure** — everything was in hand and one step of the reasoning landed on air: entirely its fault. Only the last two are correctable errors, and only they qualify to become BP's "gradient."
 
-The score decides whether to review further. By default only a wrong-direction call or a miss triggers a review; the threshold can be tightened — reviewing everything except near-perfect predictions, for instance — though that raises the cost noticeably. Once triggered, the raw data from the time is read again to judge whether the analysis was genuinely flawed: a real accident that could not have been seen then, or clues that were in the dossier and went uncaught. Only the latter is a correctable error; the former cannot be held against it — it belongs to the odds.
-
-Search is a necessary part of the review, used in roughly half of cases — most of all where outcome and call diverge widely: establishing what actually happened on those days, or whether a weak signal was already present at the time, one that pointed at the trend and only strengthened later, along with any other leads worth pursuing. The stronger the model, the more it can surface.
-
-Overall, the post-mortem does not need the debate's opposition. It is an after-the-fact judgment, with the deterministic price action already in front of it, and its one real requirement is search. So the reckoner is carried out by a single agent, linearly, without invoking Zealot, Reaper, or Fulcrum. An earlier version with grounding + Linkup search attached proved costly; it was changed to calling on Claude Code as the reckoner when idle — chosen for being both free at that moment and search-equipped. This part is still being tuned.
+The post-mortem still doesn't need the debate's adversarial machinery: the deterministic price action is already on the table, and its one real requirement is search. So the reckoner remains a single agent working linearly — an early build with grounding + Linkup search attached proved costly, and it moved to borrowing Claude Code in its idle hours as the reckoner, chosen for being both free at that moment and search-equipped. This part is no longer "being tuned" — it runs, and turns out post-mortem volumes one after another.
 
 ## 🧠 The BP plan: backpropagation for the whole system
 
@@ -134,7 +130,9 @@ BP is **backpropagation**, from neural nets — I named this self-improvement me
 
 The reason is mundane: the reports are now long and professional, and I can barely — and have no time to — read each one closely. So how do I know if it's any good, and where it's wrong? The answer is to **wait** — for post-mortem data. Days after a report goes out, the market gives the real answer; I have an AI take that answer and **review each report in detail**, then **abstract the recurring flaws across many reviews into common problems**, and finally **feed that "gradient" back** to adjust prompts and architecture.
 
-That is backpropagation: the debate is the forward pass, the post-mortem computes error against the real label, the review abstracts that error into a gradient, and editing the constitution and architecture is the weight update. Except the "gradient" here isn't a number but a lesson distilled by an AI; the "weights" aren't a matrix but that constitution and this architecture. **Removing the pivot and rewriting the Bayesian rule were the first big updates BP produced.**
+That is backpropagation: the debate is the forward pass, the post-mortem computes error against the real label, the review abstracts that error into a gradient, and editing the constitution and architecture is the weight update. Except the "gradient" here isn't a number but a lesson distilled by an AI; the "weights" aren't a matrix but that constitution and this architecture. **Removing the pivot and rewriting the Bayesian rule were the first batch of big updates BP produced; the bookkeeping protocol, staked pricing, and the mantra/move split are the second** — even the "centripetal force moved house" diagnosis was itself something BP measured out of the behavior distributions.
+
+BP has stepped in pits of its own, and the slyest one is this: **post-mortem scores can lie**. After one round of changes the average score jumped a dozen-plus points, and I nearly popped the champagne — until a closer look showed the market in those days was a third calmer than the comparison window, while the system was outputting "neutral" two-thirds of the time: **in a market that barely moves, neutral is right by default**. The score was rising, not one of the mechanism gauges had budged, and the gain was a gift from the regime. Two iron rules came out of it: align volatility (regime) before comparing scores, and **measure first, then touch the mechanism** — before steering by some signal, prove that signal actually correlates with being right.
 
 One aside: BP and the lateral-evidence idea above were both sketched back in early 2026, on nothing but a hunch that it should be done this way — and they did pan out; it just took the better part of a year from idea to running code. Not because "good design deserves to wait" — bluntly, this is a one-person **labor of love**, with no resources to build fast, so it gets ground out piece by piece as time allows.
 
@@ -162,7 +160,7 @@ To become an argument, it must report both **magnitude** (hugging the threshold,
 
 ## 🔎 Outputs need auditing; the inputs fed in need it more
 
-Two gates. First, **semantic precision**: the AI is very good at using vague phrasing to make an "inference" sound like it's "quoted straight from data," or at carrying you off with a scaleless word like "clearly on the weak side." Second, **provenance**: a message decays a layer in credibility each time it changes hands — president tweets → wire service quotes → data vendor forwards → into the dossier; no link lied, but the source chain evaporates layer by layer, and in the end the system mistakes "verbal pressure" for "policy enacted." Back when there were only free news sources this pit was deepest: the AI had no way to know the cause and effect, and forming expectations off layer upon layer of reposting bred wrong ones. So now, when the quota allows, the AI raises a verification **task** in the debate itself, having Gemini search online with grounding to piece together the cause and effect — turning "a witness who can't be reached" into "one taking the stand," which raises the ceiling on the dossier. (An aside: being misled by news, and "the AI computes odds more coolly than people do," have coexisted all along; but so far the latter wins out — it really does keep its composure better than we do.)
+Two gates. First, **semantic precision**: the AI is very good at using vague phrasing to make an "inference" sound like it's "quoted straight from data," or at carrying you off with a scaleless word like "clearly on the weak side." Second, **provenance**: a message decays a layer in credibility each time it changes hands — president tweets → wire service quotes → data vendor forwards → into the dossier; no link lied, but the source chain evaporates layer by layer, and in the end the system mistakes "verbal pressure" for "policy enacted." Back when there were only free news sources this pit was deepest: the AI had no way to know the cause and effect, and forming expectations off layer upon layer of reposting bred wrong ones. So now the AI raises a verification **task** in the debate itself, and a neutral Scout goes online to piece together the cause and effect — turning "a witness who can't be reached" into "one taking the stand," which raises the ceiling on the dossier. (An aside: being misled by news, and "the AI computes odds more coolly than people do," have coexisted all along; but so far the latter wins out — it really does keep its composure better than we do.)
 
 ## 🌀 The centripetal force didn't die — it moved house
 
@@ -199,6 +197,12 @@ The correction came gradually, and it started from the concrete end — things l
 So the real shape is two layers, and nearly every rule — from the debate as a whole down to the per-round mechanics — needs both: a pure **mantra** (what matters and why, no numbers, transferable across markets) and a concrete **move** (the reference flow, the thresholds, each carrying its reason). The old mistake was keeping them in one blob — mixed, the mantra picks up numbers and rots into a patch-list, while the move loses its reasoning and gets run as a dead rule. This update **pulls the two apart into separate layers**: the soul and the drill, no longer stepping on each other.
 
 (That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms. Just finished the separation; testing it next week.)
+
+## 🎢 The upgrade J-curve
+
+A secret I never wrote down: back when the cast went from 2 to 3 and the pivot joined, those first days were a mess too — bugs everywhere, precision falling off a cliff, several days of fixing before it recovered. This time, going from 3 back to 2 plus the ledger, the exact same movie: the first batch off the line scored *worse* than the permission regime it replaced, and again days of patching — until recently, when it finally pulled level with the old three-hander, with a visibly higher ceiling (the next post-mortem volume isn't out yet, but the tape already shows it). Two upgrades, one curve: **first into the ditch, then out of it — and the height you reach after climbing out is the new architecture's true altitude.**
+
+Which sets a rule for the post-mortem: the ugly numbers from the first days after a switch must not be read as proof of "wrong direction." **The bottom of a J-curve and the bottom of a dead end look identical**; the only way to tell them apart is whether what you're fixing is bugs — or structure that won't fix. So after every big change: hands off for a stretch, let it bank clean samples, then judge. This and "most systems that run smoothly have a stretch behind them where they couldn't catch their breath" are the same law, sighted twice.
 
 ---
 
@@ -274,7 +278,7 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 可等模型变聪明、又接上搜索，这条老规则反而**成了障碍**——因为"无法反驳"不再等于"对方有理",它可能只是"我一时查不到"。于是它同时喂出两种坏毛病：**无脑 HOLD**（谁也反驳不了谁，就各退一步回中庸）和**抬杠**（专挑天然不可证伪的风险主张往外抛，反正你也驳不掉，白赚一次退让）。空头论据天生更难证伪，这规则于是还结构性偏空。
 
-现在有了联网取证，就把它**改成新模式**：退让的前提不再是"我手头没料",而是"**已定向查证、且没能推翻**"。只有 `verified` 证据才有资格逼对方让步；边界不画在"退让多少",画在"**谁有资格要求退让**"——有实证你就得让（不会死杠），没实证你讹不到（不会无脑中庸）。
+现在有了联网取证，就把它**改成新模式**：退让的前提不再是"我手头没料",而是"**已定向查证、且没能推翻**"。只有 `verified` 证据才有资格逼对方让步；边界不画在"退让多少",画在"**谁有资格要求退让**"——有实证你就得让（不会死杠），没实证你讹不到（不会无脑中庸）。*（后来这版"资格制"也被证明拧过了头——怎么拧的、又怎么修的，见下面的 🌀。）*
 
 ## ⏰ 从固定闹钟，到（还在路上的）动态节奏
 
@@ -330,13 +334,9 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 ## 🔁 复盘：不止问对错，要问"当时它能不能看出来"
 
-辩论里有证据官负责查证；复盘同样依赖搜索，只是发生在事后。流程分几步：先用简单的量化数据看结果——在固定档位（3 天、20 天）之后，价格实际走成什么样；再结合当时那份报告和它给出的操作，打一个 0–100 的分：0 为踩空（方向判反），50 为错过（方向看对但没抓住），100 为踩中。
+辩论里有取证员管查证；复盘同样靠搜索，只是发生在事后。现在的流程分四步。**第一步看撞线**：它有没有反复撞上不该撞的线——比如你不能老撞止损线；撞线的模式本身就是病历。**第二步综合评分**：在固定档位（3 天、20 天）之后看价格实际走成什么样，结合当时那份报告和它给出的操作打 0–100 的底分（0 踩空：方向判反；50 错过：看对没抓住；100 踩中），再把撞线情况、短期走势判断和它给的分析理由合成总评。**第三步默认深查**：除非踩得很准，一律回读当时的原始信息和搜索——这一步从早期的"出错才触发"改成了"**踩准才豁免**"。**第四步归因**，分三档：**黑天鹅**——当时的信息无从看出，不是它的锅，那属于赔率本身；**弱信号**——线索在卷宗里、很弱但存在，算半个锅；**分析问题**——信息都在、推理踩空，全是它的锅。只有后两档是可修正的错误，也只有它们有资格变成 BP 的"梯度"。
 
-分数决定要不要进一步复盘。默认是踩空或错过才触发；阈值也可以收紧——比如除接近满分的预测外其余一律复盘——只是成本会明显上升。触发之后，回去读当时的原始数据，判断分析是否真有问题：是当时确实无从看出的意外，还是线索本在卷宗里、却没被接住。只有后者是可修正的错误；前者无从追责，那属于赔率本身。
-
-搜索是复盘必要的一环，大约一半情况会用到——尤其当结果与判断差距较大时：查清那几天究竟发生了什么，或当时是否已存在一个能反映趋势、之后才走强的弱信号，有时还有其他值得追查的线索。模型越强，越能从中发现东西。
-
-整体而言，复盘不需要辩论那套对抗：它是事后的判断，确定性走势已经摆在面前，真正必需的只有搜索。因此清算者（reckoner）由单个 agent 线性完成，不调用 Zealot、Reaper、Fulcrum。早先写过一个挂载 grounding + Linkup 搜索的版本，成本偏高；最终改为在 Claude Code 空闲时调用它担任 reckoner——取其当下空闲、且自带搜索。这一环目前仍在调试。
+复盘不需要辩论那套对抗：确定性走势已经摆在面前，必需的只有搜索。所以清算者（reckoner）由单个 agent 线性完成——早先挂 grounding + Linkup 搜索的版本成本偏高，后来改为在 Claude Code 空闲时调用它担任清算者，取其当下空闲、且自带搜索。这一环已经不是"仍在调试"了——它跑起来了，一册一册地出复盘报告。
 
 ## 🧠 BP 计划：给这套系统做反向传播
 
@@ -344,7 +344,9 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 
 起因很实在：现在报告写得又长又专业，我自己都很难、也没时间一份份细看。那怎么知道它到底行不行、错在哪？答案是**等**——用后验数据。一份报告发出若干天后，市场给出真实答案；让 AI 拿这答案逐份**详细复盘**，再把一堆复盘里反复出现的毛病**抽象成共性问题**，最后把这个"梯度"**反馈**回去，调 prompt、调架构。
 
-这不就是反向传播嘛：辩论是前向推理，后验是拿真实标签算误差，复盘是把误差抽象成梯度，改宪法和架构就是更新权重。只不过这里的"梯度"不是数字，是一条被 AI 提炼的抽象教训；"权重"不是矩阵，是那部宪法与这套架构。**拆支点、改贝叶斯，就是 BP 跑出来的第一批大更新。**
+这不就是反向传播嘛：辩论是前向推理，后验是拿真实标签算误差，复盘是把误差抽象成梯度，改宪法和架构就是更新权重。只不过这里的"梯度"不是数字，是一条被 AI 提炼的抽象教训；"权重"不是矩阵，是那部宪法与这套架构。**拆支点、改贝叶斯是 BP 跑出来的第一批大更新；记账制、挂牌定价、心法与招式分层，是第二批**——连"向心力搬家"这个诊断，都是 BP 自己从行为分布里量出来的。
+
+BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一版改完，均分一口气跳了十几分，我差点开香槟——细查发现那几天市场比对照期平静了三分之一，而系统三分之二的场次输出中性：**不怎么动的市场里，中性天然就是对的**。分数在涨，该动的机制指标一个都没动，涨的分是行情送的。从此复盘多了两条铁律：比分数之前先对齐波动率（regime），以及**先做度量、再动机制**——想按什么方向改，先证明那个"什么"真的和对错相关。
 
 顺一句：BP 和上面那条"横向取证",其实我 2026 年初就构思好了，当时只是直觉觉得该这么干，后来也果然管用——只是从想到到做出来，隔了大半年。倒不是什么"好设计值得等",说白了就是：这是个一个人**用爱发电**的私人项目，没资源迅速实现，只能挤着时间一件件慢慢磨。
 
@@ -372,7 +374,7 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 
 ## 🔎 输出要审计，喂进去的输入更要审计
 
-两道关。一是**语义精确**：AI 很会用含混语气把一个"推断"说得像"直接引自数据"，或只给"明显偏弱"这种没刻度的词把你带走。二是**消息溯源**：一条消息每转一手，可信度就衰减一层——总统发条推 → 通讯社引用 → 数据商转发 → 进了卷宗，每环都没撒谎，但来源链层层蒸发，最后系统就把"口头施压"当成了"政策落地"。早期只有免费新闻源时这坑最深：AI 没法知道前因后果，照着层层转载就形成了错误预期。所以现在额度允许时，辩论里 AI 会自己提出查证 **task**，让 Gemini 联网 grounding 搜索、归纳前因后果——把"传不到的证人"变成"当场出庭"，卷宗的上限就被抬高了。（题外一句：被消息误导、和"AI 算赔率比人冷静"这两层一直并存；但目前看是后者占上风——它确实比我们沉得住气。）
+两道关。一是**语义精确**：AI 很会用含混语气把一个"推断"说得像"直接引自数据"，或只给"明显偏弱"这种没刻度的词把你带走。二是**消息溯源**：一条消息每转一手，可信度就衰减一层——总统发条推 → 通讯社引用 → 数据商转发 → 进了卷宗，每环都没撒谎，但来源链层层蒸发，最后系统就把"口头施压"当成了"政策落地"。早期只有免费新闻源时这坑最深：AI 没法知道前因后果，照着层层转载就形成了错误预期。所以现在辩论里 AI 会自己提出查证 **task**，由中立的 Scout 取证员联网搜索、归纳前因后果——把"传不到的证人"变成"当场出庭"，卷宗的上限就被抬高了。（题外一句：被消息误导、和"AI 算赔率比人冷静"这两层一直并存；但目前看是后者占上风——它确实比我们沉得住气。）
 
 ## 🌀 向心力没死，它搬了家
 
@@ -409,6 +411,12 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 于是真正的形状是两层，几乎每条规则——从整场辩论到每一轮的机制——都同时需要：一层纯**心法**（讲什么重要、为什么，不带数字，能跨市场迁移），一层具体**招式**（参考流程、阈值，每个都带着它的理由）。过去的毛病是把两样揉成一坨——揉在一起，心法沾上数字、退化成补丁清单，招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**：心法与招式，不再互相踩脚。
 
 （这正是两个词的武学本义：心法是内功心诀，招式是外在招法。这次刚把分离做完，下周试。）
+
+## 🎢 升级的 J 曲线
+
+说个一直没写的秘密：当年 2 升 3、给系统加支点的那几天，也是各种出 bug、精度急剧下降，修了好几天才修好。这次 3 回 2、换记账制，一模一样：刚上线那批的表现比它要取代的许可制**还差**，又是连修好几天——直到最近，能力才追平当年的三人阵容，而新架构的上限明显更高（下一册后验还没出炉，但盘面表现已经看得出来）。两次升级，同一条曲线：**先跌进沟，再爬出来——爬出来之后的天花板，才是新架构的真实高度。**
+
+这给复盘立了条规矩：刚换轨那几天的烂数据，不能当"方向错了"的证据。**J 曲线的谷底和死路的谷底，长得一模一样**，分辨它们只能看你修的是 bug、还是修不动的结构。所以每次大改后：停一停手，让它攒够干净样本，再下结论。这条和"能稳定运转的系统，背后都有一段没人看见的喘不上气"，是同一条定律的两次现身。
 
 ---
 
