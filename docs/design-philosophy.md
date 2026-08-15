@@ -190,6 +190,14 @@ What works on these knobs is welding the two together: **a reference magnitude w
 
 One scope note: this recipe is for the rhythm knobs. The debaters' core personas and the constitution's principles stay pure mantra — no numbers welded on, and nothing there has asked for them so far. Between fully mechanical settlement (posted stake prices) at one end and pure mantra at the other, "magnitude expectation" turned out to be the band where number-with-reasons wins.
 
+## 🥋 Mantra and move: two layers, finally pulled apart
+
+For a long time the constitution was one thing: pure mantra (see Cyber-Boxers above). Then some knobs turned out to need a reference number with its reason (the anchor-not-handcuff note). Pushing that far enough, the real shape finally showed: **nearly every rule — from the debate as a whole down to the per-round mechanics — needs two things at once.** A **mantra** (心法): the highly abstract principle, stating what matters and why, carrying no numbers, so it transfers across markets. And a **move** (招式): the concrete technique — a reference procedure, a worked explanation, the thresholds — so the model actually knows how to execute it.
+
+The mistake was keeping them in one blob. Mixed together, the mantra picks up numbers and decays into a patch-list, while the move loses its rationale and gets run as a dead rule. So this update **pulls the two apart into separate layers**: the mantra stays pure mantra; the move carries the flow and the thresholds (and, per the note above, every number in it travels with its reason). Same rule, two registers — the soul and the drill, no longer stepping on each other.
+
+(That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms. Just finished the separation; testing it next week.)
+
 ---
 
 Questions and discussion welcome: **sst19910323@gmail.com**
@@ -389,6 +397,14 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 在这类旋钮上管用的，是把两样焊在一起：**一个参考量级，附带它的设计推理**。不说"辩论跑 5–15 轮"，而说"典型一局 5–15 轮，*因为*一个议题谈透要一两轮、一张像样的清单上总有好几个议题——所以别数轮数，数还没结清的议题"。不说"最多看 7 天"，而说"天数 = 证据能照亮的距离——没有事件锚时 7 天是参考上限、不是默认值；证据只照得亮两天，就写两天"。数字给模型一个校准锚点；附带的那段理由，恰恰是它"正确地偏离数字"的许可证。
 
 补一句边界：这个配方只用在节奏类旋钮上。辩手的核心人设、宪法里的原则，依然是纯心法——不焊数字，目前也没发现那里需要。在"完全机械结算"（挂牌定价）和"纯心法"这两端之间，"量级预期"恰好是"数字带理由"取胜的那一段。
+
+## 🥋 心法与招式：终于把两层彻底分开
+
+很长一段时间，宪法只有一样东西：纯心法（见上面的「赛博义和团」）。后来发现有些旋钮得配一个"带理由的参考数字"（见「是锚不是铐」那条）。把这条推到底，真正的形状才显出来：**几乎每一条规则——从整场辩论到每一轮的机制——都同时需要两样东西。** 一样是**心法**：高度抽象的原则，只讲什么重要、为什么，不带数字，所以能跨市场迁移。另一样是**招式**：具体的技术——一套参考流程、一段讲透的解释、几个阈值——好让模型真的知道怎么执行。
+
+过去的毛病是把这两样揉成一坨：心法沾上数字、退化成补丁清单；招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**——心法归心法，保持纯粹；招式归招式，承载流程和阈值（而且照上一条，招式里的每个数字都带着它的理由一起走）。同一条规则，两种笔法，不再互相踩脚。
+
+（这正是两个词的武学本义：心法是内功心诀，招式是外在招法。这次刚把分离做完，下周试。）
 
 ---
 
