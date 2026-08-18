@@ -128,7 +128,7 @@ The original edition — three debaters (Zealot / Reaper / **Fulcrum**) + a sepa
 <details>
 <summary>🕰️ <b>Timeline (click to expand)</b></summary>
 
-From an overconfident single agent to today's two-advocate + arbiter architecture.
+The cast's headcount tells the first arc — one overconfident agent → two → three → and back to two. The rest of the story is what layered on top: a **reckoner + BP loop** that trains the system on its own hindsight, the **task mode** now gradually taking shape (debate ⊃ task ⊃ evidence), and the shift off a self-built **API stack** onto **agent-native** runners (Claude Code / GPT Codex).
 
 ![timeline](images/timeline.png)
 
@@ -265,7 +265,7 @@ BP = **反向传播**：辩论是前向推理，后验是对真实标签算误�
 <details>
 <summary>🕰️ <b>开发时间线（点击展开）</b></summary>
 
-从最初一个过度自信的单 Agent，一路演化到今天的"二辩手 + 仲裁者"架构。
+阵容的人数是故事的前半段——一个过度自信的单 agent → 两个 → 三个 → 又收回两个。后半段是层层叠上去的东西：一个让系统用自己"事后诸葛"训练自己的 **reckoner + BP 闭环**、如今逐渐成形的 **task 模式**（辩论 ⊃ task ⊃ evidence），以及从自搭的 **API 版**转向 **agent 原生**运行版（Claude Code / GPT Codex）。
 
 ![timeline](images/timeline.png)
 
