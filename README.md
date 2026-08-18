@@ -37,6 +37,16 @@ Apex Quant is an LLM-based multi-agent framework for quantitative analysis. Befo
 
 ---
 
+## 🎫 Beyond a lookup: when a debater files a task
+
+![debate-and-task architecture](images/debate_task_architecture.png)
+
+A debater no longer fights solo. When a point needs more than a quick lookup — modeling a tariff shock through to CPI, reading a stock against its true peers, tracing a news item's cause and effect — it **files a task**: a work order that a neutral **runner** executes along a fixed playbook (an SOP pipeline) and hands back as a structured, high-value result. The **Scout** was the first such teammate; the playbook-runners are the rest.
+
+Two things make this more than delegation. **Evidence is demoted to a task's output** — the first-class unit is the task (one question, one answer), and the final verdict is the composite price of all those small settlements. And **strength is the execution result, not the volume of assertion**: shout a move's name with nothing run behind it and it's priced as bare rhetoric; only a *verified* task earns a top-tier card, cited by task ID and machine-reconciled against the task ledger. Not everything becomes a task, though — a single search or one data leg stays *direct* evidence, no ticket. (The full story, and the token / latency trade-off I'm tuning right now, is in the [design philosophy](docs/design-philosophy.md).)
+
+---
+
 ## 🔄 The debate flow
 
 ![flowchart](images/flowchart-v2.png)
@@ -170,6 +180,16 @@ Apex Quant 是一个基于大语言模型的多智能体量化分析框架。在
 - 🔭 **Scout（取证员）** —— 中立取证队，按需派出、一问一员。两条腿：**横向数据腿**（经 IBKR 做同业对比 —— 相对强弱 / 估值，比的是这只票*真正的*同行，而非泛泛大盘）和**联网搜索腿**（理清一条新闻的前因后果）。取证结果对两边公开。
 
 **相比 v1 变了什么。** 当阻尼器的中立第三极 **Fulcrum** 被退役了。一次 n=56 的复盘量出它净贡献中性偏负：毁值和拦截一样多，连"拦对"的也多半够不上及格线（一种"死 HOLD、白错过机会"的形态）。它唯一有用的"反驳"职能被拆进两位辩手内化；贝叶斯退让规则被重新设门槛，只有 *verified* 证据才能逼退让；再加一个**定向取证**的信息入口，让每轮辩论真的注入新信息、而非只朝均值压缩。完整推理与数据见[设计哲学](docs/design-philosophy.md)。
+
+---
+
+## 🎫 不止于查一下：辩手可以发一张 task
+
+![辩论与 task 架构](images/debate_task_architecture.png)
+
+辩手不再单打独斗。一个点需要的不止是随手查一下时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比、理清一条新闻的前因后果——它会**发一张 task 单**：一张工作单，由中立的**执行员（runner）**照一本固定的 playbook（一条 SOP 流水线）执行，再作为结构化的高价值结果交回。**Scout** 是这样的第一个队友，playbook 执行员是其余的。
+
+有两点让它不只是"分工"。**证据被降级为 task 的产出**——一等单位是 task（一个问题、一个答案），而终裁是所有这些小结算的综合定价。以及**强度看执行结果，不看嗓门**：喊出招式名、背后什么都没跑，就按裸修辞定价；只有 *verified* 的 task 才配最高档的牌，须引 task ID、并由机器与 task 台账对账。但不是什么都变成 task——单次搜索、单条数据腿仍是*直属*证据，不开单子。（完整来龙去脉，以及我此刻正在调的 token / 延迟取舍，见[设计哲学](docs/design-philosophy.md)。）
 
 ---
 

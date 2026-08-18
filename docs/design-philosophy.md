@@ -198,6 +198,22 @@ So the real shape is two layers, and nearly every rule — from the debate as a 
 
 (That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms. Just finished the separation; testing it next week.)
 
+## 🎫 The debater stops fighting solo — it files a work order
+
+![debate-and-task architecture](../images/debate_task_architecture.png)
+
+This is the update the 🥋 split was quietly building toward. Pulling mantra apart from move told me *what* the two layers are; this tells me *where the move layer lives, and who runs it.*
+
+Start from an inversion I'd had backwards. I treated **evidence** as the thing the debate was chasing — go find the fact, bring it back. But finding a fact was never the point; the point was always to settle one small, specific **question**, and the verdict is just the composite price of all those small settlements. So the first-class citizen isn't the evidence — it's the **task**: a work order that asks a single question and comes back with an answer. Evidence dropped a rank, to *a task's output* — a leaf, not the tree.
+
+That reframes what a debater is. It used to fight solo, carrying every analytical move in its own head as constitution text. Now it has a **team** behind it: when a point needs real work — model a tariff shock through to CPI, read a stock against its true peers, trace a news item's cause and effect — it doesn't do the work itself, it **files a task**, and a neutral **runner** executes a fixed playbook and returns a structured result. The Scout was the first of these teammates; the playbook-runners are the second through Nth. Same shape, generalized.
+
+Why route through a task at all, instead of letting the debater just reason it out? **Neutrality.** The moment you hand the judgment step to an interested party, you're back at the disease that started this whole project — the advocate quietly argues toward the answer it already wanted. A neutral runner following the playbook can come back with a result that *hurts* the side that asked for it. That's what makes it evidence and not rhetoric. So the rule closes with a price — the same staking logic as the ⚖️ note above: **strength is the execution result, not the volume of assertion.** Shout a move's name with nothing run behind it and it's priced as bare rhetoric, the lowest tier; only a *verified* runner task earns a top-tier card, and it must cite the task's ID. A machine reconciles every claim against the task ledger — a top card with no task behind it gets marked down automatically. Talking a good game is finally cheaper than proving one.
+
+The restraint matters as much as the mechanism. **Not everything becomes a task.** You don't summon a work-crew to look up one number: a single search, one data leg, the arbiter's own spot-check — those stay *direct* evidence, with no ticket at all. The shape is a three-layer nesting — debate ⊃ task ⊃ evidence — but the middle layer only appears when there's real work to delegate. Over-bureaucratizing is its own failure mode; a system that files a formal task to check the time is as broken as one that never checks.
+
+And this is where that 🥋 move layer finally gets a home. A move is no longer text the debater lugs around in a 100KB constitution it half-reads; it's an **index line** — three or four words, *see this → reach for that* — with the full playbook loaded only when the move is actually invoked. Which is exactly what I'm grinding on right now: the resident context drops by nearly half once the moves move out, a real token win — but dispatch adds round-trip latency, and a batch of tasks per round can inflate the round count if I let it. This whole current pass is that trade-off — keep the debater's head light and its moves sharp, without letting the task machinery tax every debate in time and tokens. It's landing in pieces; the tuning is live.
+
 ## 🎢 The upgrade J-curve
 
 A secret I never wrote down: back when the cast went from 2 to 3 and the pivot joined, those first days were a mess too — bugs everywhere, precision falling off a cliff, several days of fixing before it recovered. This time, going from 3 back to 2 plus the ledger, the exact same movie: the first batch off the line scored *worse* than the permission regime it replaced, and again days of patching — until recently, when it finally pulled level with the old three-hander, with a visibly higher ceiling (the next post-mortem volume isn't out yet, but the tape already shows it). Two upgrades, one curve: **first into the ditch, then out of it — and the height you reach after climbing out is the new architecture's true altitude.**
@@ -411,6 +427,22 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 于是真正的形状是两层，几乎每条规则——从整场辩论到每一轮的机制——都同时需要：一层纯**心法**（讲什么重要、为什么，不带数字，能跨市场迁移），一层具体**招式**（参考流程、阈值，每个都带着它的理由）。过去的毛病是把两样揉成一坨——揉在一起，心法沾上数字、退化成补丁清单，招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**：心法与招式，不再互相踩脚。
 
 （这正是两个词的武学本义：心法是内功心诀，招式是外在招法。这次刚把分离做完，下周试。）
+
+## 🎫 辩手不再单打独斗——它开一张工作单
+
+![辩论与 task 架构](../images/debate_task_architecture.png)
+
+这正是 🥋 那次分离一直在悄悄铺垫的更新。把心法从招式里剥出来，告诉我这两层*是什么*；这一次，告诉我招式那层*住在哪、由谁来跑*。
+
+先从一个我一直搞反了的倒装说起。我一直把**证据**当成辩论追逐的东西——去把事实找回来。可找到一个事实从来不是目的；目的始终是把一个具体的小**问题**结算掉，而终裁不过是所有这些小结算的综合定价。所以一等公民不是证据，是 **task**：一张只问一个问题、带着答案回来的工作单。证据降了一级，成了 *task 的产出*——是叶子，不是那棵树。
+
+这重新定义了辩手是什么。它过去单打独斗，把每一招分析动作都当宪法条文背在自己脑子里。现在它背后有一支**团队**：一个点需要真功夫时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比、理清一条新闻的前因后果——它不自己动手，而是**发一张 task 单**，由中立的**执行员（runner）**照一本固定的 playbook 跑完、返回结构化结果。Scout 是这支团队的第一个成员，playbook 执行员是第 2 到第 N 个。同一个形状，泛化开来。
+
+为什么非得走 task，而不干脆让辩手自己想明白？**为了中立。** 你一旦把判断那一步交给利益相关方，就又回到了这整个项目最初的病根——辩手会悄悄朝它本来就想要的答案去论证。而一个照 playbook 执行的中立 runner，跑出来的结果可能反而**不利于**发单的那一方。这才叫举证，不是修辞。所以规则用一个价格收口——和上面 ⚖️ 那条挂牌定价同一套逻辑：**强度是执行结果，不是嗓门大小。** 喊出一个招式名、背后什么都没跑，就按裸修辞定价、最低档；只有 verified 的 runner task 才配得上最高档的牌，而且必须引这张 task 的 ID。一台机器拿每条主张跟 task 台账对账——高档牌背后没有 task，自动降档。嘴上漂亮，终于比证明它更便宜了。
+
+克制和机制一样重要。**不是什么都变成 task。** 你不会为查一个数字就召来一支施工队：单次搜索、单条数据腿、仲裁者自己的抽查——这些仍是*直属*证据，一张单子都不开。形状是三层嵌套——辩论 ⊃ task ⊃ evidence——但中间那层只在真有活儿要发包时才出现。过度官僚化本身就是一种失败模式；一个为查看时间都要开正式 task 的系统，和一个从不查证的系统，一样是坏的。
+
+而这，正是 🥋 那个**招式层**终于安下家的地方。一招不再是辩手拖在一部 100KB、自己都只读一半的宪法里的文字；它是一行**索引**——三四个字，*看到这个 → 去够那个*——完整的 playbook 只在这招真被调用时才加载。这也恰是我此刻正在磨的事：招式搬出去后，常驻上下文差不多砍掉一半，是实打实的 token 收益——可发包带来往返延迟，一轮里并行发一批 task，一个不留神就会把轮数撑大。当前这一整轮，磨的就是这个取舍——让辩手脑子轻、招式利，又不让这套 task 机制在时间和 token 上给每一场辩论加税。它在一块块落地；调优正在进行。
 
 ## 🎢 升级的 J 曲线
 
