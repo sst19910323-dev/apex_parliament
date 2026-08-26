@@ -214,6 +214,18 @@ The restraint matters as much as the mechanism. **Not everything becomes a task.
 
 And this is where that 🥋 move layer finally gets a home. A move is no longer text the debater lugs around in a 100KB constitution it half-reads; it's an **index line** — three or four words, *see this → reach for that* — with the full playbook loaded only when the move is actually invoked. Which is exactly what I'm grinding on right now: the resident context drops by nearly half once the moves move out, a real token win — but dispatch adds round-trip latency, and a batch of tasks per round can inflate the round count if I let it. This whole current pass is that trade-off — keep the debater's head light and its moves sharp, without letting the task machinery tax every debate in time and tokens. It's landing in pieces; the tuning is live.
 
+## 🪑 Task lifted the analysis — and left the verdict standing at a clerk's desk
+
+The task build-out (🎫) came with a clean before/after, and the good news landed first: **the analysis genuinely got deeper.** The latest post-mortem caught the system calling a stock's full round-trip path almost to the number — down into a support zone and back up — and across the batch there were *zero* direction-reversed heavy losses, with the god-tier event-driven reads (the earnings that's already priced, so the beat sells off) finally starting to appear on their own. Whatever the bottleneck is now, it is provably **no longer the thinking.**
+
+Which threw a spotlight on where the value was leaking instead: the **verdict**. In the task era the two advocates diverge *hard* — their machine-settled closing prices sit 16–19 points apart, and in the great majority of debates at least 15 — yet the final call lands **under two points off the exact midpoint.** The disagreement is real, and the arbiter averages it away. This is the ⚖️ "taking the middle is arithmetic" finding again, now measured with the divergence confirmed loud: the machine is thinking in stereo and deciding in mono.
+
+Two joined causes, and the second is the one that stings. **First, the independent arbiter is still a clerk, not a judge.** It has procedure in abundance — evidence admission, ledger audit, report assembly — but no judgment layer of its own. A role built to be neutral, handed two strong personalities to referee, quietly reads "neutral" as "sit at the midpoint, or follow whoever argued best." That's exactly the 🥋 imbalance — all move, no mantra — landing on the one seat that most needs both. **Second, HOLD rides free.** An unreasoned HOLD costs zero paperwork, while any real trade must post a full evidence stake. That fee differential *is* the physical source of "HOLD gravity" — and no amount of "HOLD is not the default exit," written into the constitution, can out-argue a fee schedule. Over a stretch of weeks HOLD ran 70–94% of all calls; one report mapped a stock's entire path and still signed off HOLD, size N/A.
+
+Step back and it's the same ghost a third time. The **centripetal force moved house** (🌀) again: it started as a personality (Fulcrum), migrated into an institution (the concession rule), and has now settled into the arbiter's structural role plus HOLD's zero toll. Kill it in one place and it reappears wherever the cheapest, most neutral-looking output happens to be the mushy middle. An org chart doesn't remove a bias; it just tells you which office it moves into next.
+
+The fix is sketched, not built — and deliberately *not* a third agent, nor a rule that forces trades. Two moves. Restore a **convex burden curve**: a slight tilt off neutral should be cheap to justify, an extreme stance expensive, the cost climbing fast with conviction — so the debate stops treating "50" as the safe default and starts treating it as a claim like any other. And **charge HOLD the same structural tax as a trade** — HOLD is a decision, a bet whose price is the exposure it chooses to keep, so it files the same paperwork: a stance, a reason, the odds. The arbiter, finally, gets what it's missing — not a stance of its own (a stance just resurrects Fulcrum), but a **judge's discipline**: free to rule, rigid to justify, every ruling citing the evidence and auditable after the fact, with an appeal that reviews *patterns*, never single cases. The courtroom has had only a clerk this whole time. It's getting a judge.
+
 ## 🎢 The upgrade J-curve
 
 A secret I never wrote down: back when the cast went from 2 to 3 and the pivot joined, those first days were a mess too — bugs everywhere, precision falling off a cliff, several days of fixing before it recovered. This time, going from 3 back to 2 plus the ledger, the exact same movie: the first batch off the line scored *worse* than the permission regime it replaced, and again days of patching — until recently, when it finally pulled level with the old three-hander, with a visibly higher ceiling (the next post-mortem volume isn't out yet, but the tape already shows it). Two upgrades, one curve: **first into the ditch, then out of it — and the height you reach after climbing out is the new architecture's true altitude.**
@@ -443,6 +455,18 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 克制和机制一样重要。**不是什么都变成 task。** 你不会为查一个数字就召来一支施工队：单次搜索、单条数据腿、仲裁者自己的抽查——这些仍是*直属*证据，一张单子都不开。形状是三层嵌套——辩论 ⊃ task ⊃ evidence——但中间那层只在真有活儿要发包时才出现。过度官僚化本身就是一种失败模式；一个为查看时间都要开正式 task 的系统，和一个从不查证的系统，一样是坏的。
 
 而这，正是 🥋 那个**招式层**终于安下家的地方。一招不再是辩手拖在一部 100KB、自己都只读一半的宪法里的文字；它是一行**索引**——三四个字，*看到这个 → 去够那个*——完整的 playbook 只在这招真被调用时才加载。这也恰是我此刻正在磨的事：招式搬出去后，常驻上下文差不多砍掉一半，是实打实的 token 收益——可发包带来往返延迟，一轮里并行发一批 task，一个不留神就会把轮数撑大。当前这一整轮，磨的就是这个取舍——让辩手脑子轻、招式利，又不让这套 task 机制在时间和 token 上给每一场辩论加税。它在一块块落地；调优正在进行。
+
+## 🪑 task 把分析托了上去，判决却还杵在书记员的桌前
+
+task 那套建完（🎫），正好带出一组干净的前后对照，而好消息先到：**分析是真的变深了。** 最近一册后验里，系统把一只票的完整往返路径几乎按数字喊了出来——跌进支撑区、再弹回来——整批样本里方向算反的重败挂零，而那些封神级的事件驱动判断（财报会好、可利好已被定价，公布即回落）也终于开始自己冒出来。现在的瓶颈无论是什么，可以确证：**已经不是"想"这一环了。**
+
+于是聚光灯打到了价值真正漏掉的地方——**终裁**。task 时代里两位辩手分歧拉得很开——双方机器结算价常年差着 16–19 分、绝大多数场次至少差 15 分——可最终判断落在**离正中点不到两分**的地方。分歧是真的，仲裁者却把它平均掉了。这正是 ⚖️「取中是算术」那条发现的重演，只是这回分歧被量得震天响：机器用立体声思考，却用单声道拍板。
+
+两个交织的病因，第二个尤其扎心。**其一，那个独立仲裁者，至今是个书记员，不是法官。** 程序它多的是——证据准入、账本审计、报告组装——却没有一层属于自己的判断。一个被设定成"中立"的角色，手里递来两个强人格要它裁，就会悄悄把"中立"读成"坐在中点、或跟着更会说的那个走"。这恰是 🥋 那个失衡——全是招式、没有心法——偏偏落在了最需要两者兼备的那把椅子上。**其二，HOLD 在免费搭车。** 一个不讲理由的 HOLD，文书成本为零；而任何一笔真操作都得押上整套证据。这个费率差**就是**"HOLD 引力"的物理来源——宪法里写多少遍"HOLD 不是默认出口"，都吵不过一张费率表。连着几周里，HOLD 占了全部判断的 70%–94%；有一份报告把一只票的整条路径都画出来了，落款却还是 HOLD、仓位 N/A。
+
+退一步看，这是同一个幽灵第三次现身。**向心力又搬了家**（🌀）：它起先是个性格（Fulcrum），迁进了制度（退让规则），如今又安顿进了仲裁者的结构性角色、加上 HOLD 那道零通行费。你在一处杀了它，它就在"最便宜、最像中立"的那个输出恰好是稀泥中庸的地方重新冒头。一张组织架构图消不掉偏见，只会告诉你它下一步要搬进哪间办公室。
+
+修法只勾了轮廓、还没落地——而且刻意**不是**加第三个 agent，也不是一条逼着交易的规则。两步。恢复一条**凸形的举证曲线**：离中性偏一点点，举证要便宜；立场越极端，举证越贵，代价随信念快速上涨——让辩论别再把"50"当安全默认值，而是当成一个和别的主张同级的主张。以及，**给 HOLD 上和交易一样的结构税**——HOLD 是一个决策、是一注，它的价码就是它选择继续持有的那份敞口，所以它交同一套文书：一个立场、一条理由、一副赔率。而仲裁者，终于拿到它一直缺的那样东西——不是一个属于自己的立场（立场只会把 Fulcrum 还魂），而是一套**法官的纪律**：判决权完全自由，判决书义务完全刚性，每一次裁决都引证据、都能事后审计，再配一个只看**模式**、绝不改单案的上诉审。这间法庭一直只坐着书记员。现在，要给它配一位法官。
 
 ## 🎢 升级的 J 曲线
 
