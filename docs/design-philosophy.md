@@ -214,15 +214,21 @@ The restraint matters as much as the mechanism. **Not everything becomes a task.
 
 And this is where that 🥋 move layer finally gets a home. A move is no longer text the debater lugs around in a 100KB constitution it half-reads; it's an **index line** — three or four words, *see this → reach for that* — with the full playbook loaded only when the move is actually invoked. Which is exactly what I'm grinding on right now: the resident context drops by nearly half once the moves move out, a real token win — but dispatch adds round-trip latency, and a batch of tasks per round can inflate the round count if I let it. This whole current pass is that trade-off — keep the debater's head light and its moves sharp, without letting the task machinery tax every debate in time and tokens. It's landing in pieces; the tuning is live.
 
-## 🪑 Task lifted the analysis; the arbiter's skill just hasn't had its turn
+## 🗺️ The map was right; the ship never turned — analysis and operation are two layers
 
-The task build-out (🎫) landed with a clean before/after, and the good news came first: **the analysis genuinely got deeper.** The latest post-mortem caught the system calling a stock's full round-trip path almost to the number — down into a support zone and back up — with zero direction-reversed heavy losses across the batch, and the god-tier event-driven reads (the earnings that's already priced, so the beat sells off) starting to appear on their own. The bottleneck, whatever it is now, is provably **no longer the thinking.**
+Task paid off where it was supposed to: the analysis got genuinely, sometimes startlingly deep. One MU session is the specimen — it read the whole round trip almost to the number, calling the drop into the high-880s and the recovery back toward 930 before any of it happened, the swings pinned with a precision I didn't know it had. And then it signed the report **HOLD, size N/A.** A flawless chart, and nobody at the wheel.
 
-So where's the value leaking? The **verdict** — and the honest answer is mundane. The debaters got the whole upgrade: task, playbooks, the move layer rebuilt. The **arbiter's own skill barely got touched.** Its constitution is still mostly the old procedural clerk-work — admit evidence, audit the ledger, assemble the report — and the one thing it does when two strong advocates disagree, it does by default rather than by design: it splits the difference. Measured, the gap is loud — the two sides' settled prices sit 16–19 points apart, yet the final call lands **under two points off the exact midpoint** (the ⚖️ "taking the middle is arithmetic" finding, now with the divergence confirmed). The machine thinks in stereo and decides in mono — and it decides that way because nobody has yet written it a better move.
+That gap taught me something I'd been running past for a year: **analysis and operation are two different layers, and a perfect one on top does not make the one below.** Reading the market right is a *map*; deciding the single best move off that map — given where the price sits, what the odds pay, what a wrong step costs — is a separate act of *navigation*. The founding sin of this project was "talks like an analyst, trades like a gambler" (🗣️); this is its subtler cousin, one stage later — it *sees* like a pro, and then just… stands there. The analysis layer can be doing genuinely excellent work while the operation layer, quietly, converts almost none of it.
 
-The sharpest symptom of that un-reworked skill is **HOLD riding free.** An unreasoned HOLD costs zero paperwork, while any real trade has to post a full evidence stake — and that fee differential *is* the physical source of "HOLD gravity." No amount of "HOLD is not the default exit," written into the constitution, out-argues a fee schedule. Over a stretch of weeks HOLD ran 70–94% of all calls; one report mapped a stock's entire path and still signed off HOLD, size N/A.
+Which is oddly good news, because it localizes the failure. For a long time I couldn't tell whether a mushy HOLD meant the system didn't *understand* the stock or didn't *act* on its understanding — and those need opposite fixes. MU settled it: the understanding was there, in ink, ahead of time. So the work in front of me isn't "make it smarter." It's to build the missing translation — the layer that turns a correct read into a committed move — and to stop scoring the two as one thing: a beautiful map that ends in HOLD should not pass just because the map was beautiful.
 
-None of this is a deep mystery, and that's the point. It isn't that the analysis is weak, or that some ghost keeps migrating (though the ⚖️/🌀 pull-toward-the-middle is real enough) — it's that a one-person project spends its hours where the leverage looks biggest, and the arbiter's move-set simply hasn't come up in the queue. The fix is sketched, and deliberately *not* a third agent nor a rule that forces trades: give the arbiter a real skill layer — a **convex burden curve** so a slight tilt is cheap to justify and an extreme stance expensive, and **HOLD taxed like any other trade** (it's a decision, a bet whose price is the exposure it keeps, so it files the same stance-reason-odds). Same 心法/招式 lesson as everywhere else (🥋): this seat has procedure to spare and no developed judgment. It's just next in line to get built.
+## 🧩 The mindless HOLD wasn't a deep flaw — the refactor had dropped a rule
+
+So the operation layer is where it leaks, and the leak has a specific shape: the arbiter **loves to split the difference.** The two advocates diverge hard — their settled prices sit 16–19 points apart — yet the final call lands under two points off the exact midpoint; across a stretch of weeks, 70–94% of all calls came out HOLD. My first draft of this note reached for a grand story — a bias that keeps migrating from role to role. The truth, once I actually went looking, is smaller and more embarrassing: **it's a regression.**
+
+The old three-debater version had real rules for exactly this — a burden-of-proof curve tied to how far your stance sat from the others: agree with the room and you just state your logic; break from one side and you owe its strongest counter-argument; stand alone against both and you carry the heaviest cross-examination. That curve is precisely what makes a slight tilt cheap and an extreme stance expensive — what stops a debate from defaulting to the safe middle. And somewhere in the migration from three agents to two-plus-an-arbiter, **that rule got quietly deleted along with the structure it lived in.** Nobody decided the arbiter should average; the thing that used to stop it from averaging just… wasn't carried over.
+
+That's the honest diagnosis, and it's a humbler one than "a ghost in the institution." A big refactor doesn't only move code around; it silently drops rules that were load-bearing, and you don't find out until the behavior they were holding up sags months later. The arbiter's whole skill layer got thin in the rebuild (the 🥋 lesson, landing on the one seat that most needs its 招式) — the mindless HOLD is just the most visible splinter. The repair isn't clever: put the burden curve back, and make **HOLD pay the same toll as any trade** — today an unreasoned HOLD costs zero paperwork while a real trade posts a full evidence stake, and that fee gap alone is enough to pull everything toward the middle. Not a redesign. A rule that fell out, put back.
 
 ## 🎢 The upgrade J-curve
 
@@ -454,15 +460,21 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 
 而这，正是 🥋 那个**招式层**终于安下家的地方。一招不再是辩手拖在一部 100KB、自己都只读一半的宪法里的文字；它是一行**索引**——三四个字，*看到这个 → 去够那个*——完整的 playbook 只在这招真被调用时才加载。这也恰是我此刻正在磨的事：招式搬出去后，常驻上下文差不多砍掉一半，是实打实的 token 收益——可发包带来往返延迟，一轮里并行发一批 task，一个不留神就会把轮数撑大。当前这一整轮，磨的就是这个取舍——让辩手脑子轻、招式利，又不让这套 task 机制在时间和 token 上给每一场辩论加税。它在一块块落地；调优正在进行。
 
-## 🪑 task 把分析托了上去；仲裁者的招式，只是还没轮到它
+## 🗺️ 图画对了，船却没掉头——分析和操作是两个层面
 
-task 那套建完（🎫），带出一组干净的前后对照，好消息先到：**分析是真的变深了。** 最近一册后验里，系统把一只票的完整往返路径几乎按数字喊了出来——跌进支撑区、再弹回来——整批样本方向算反的重败挂零，那些封神级的事件驱动判断（财报会好、可利好已被定价、公布即回落）也终于开始自己冒出来。现在的瓶颈无论是什么，可以确证：**已经不是"想"这一环了。**
+task 在它该见效的地方见了效：分析是真的变深了，深得有时让我吃惊。MU 那一期就是标本——它把整条往返路径几乎按数字喊了出来，跌进 880 多、再弹回 930 附近，全在事情发生之前就说中了，波动被钉得之准，是我原先都不知道它有的本事。然后，它给这份报告落款：**HOLD，仓位 N/A。** 一张完美的海图，却没人掌舵。
 
-那价值漏在哪？**终裁**——而老实的答案很平淡。辩手把整套升级都拿到了：task、playbook、招式那一层重搭了一遍。**仲裁者自己的招式，却几乎没动过。** 它的宪法基本还是那套老书记员的活儿——准入证据、审计账本、组装报告——两个强辩手分歧时它唯一做的那件事，是出于默认、而非出于设计：取中。量出来，差距很响——双方结算价差着 16–19 分，最终判断却落在**离正中点不到两分**的地方（正是 ⚖️「取中是算术」那条，如今分歧被坐实）。机器用立体声思考、用单声道拍板；它这么拍，是因为还没人给它写过一招更好的。
+这道缝隙教会我一件我绕过去一年的事：**分析和操作是两个不同的层面，上面那层再完美，也不自动长出下面那层。** 把市场看对，是一张*地图*；从这张地图上定出当前唯一最优的那一步——看价格在哪、赔率赔多少、走错一步的代价是什么——是另一桩*导航*的活。这个项目的原罪是"顶着分析师的嘴、做着赌徒的手"（🗣️）；而这是它更隐蔽的表亲、晚一个阶段——它*看*得像个高手，然后就……杵在那儿。分析层可以在干着真正一流的活，而操作层却悄悄地，几乎一点都没转化过来。
 
-这套没被重做的招式，最扎眼的症状就是 **HOLD 在免费搭车。** 不讲理由的 HOLD，文书成本为零；而任何一笔真操作都得押上整套证据——这个费率差**就是**"HOLD 引力"的物理来源。宪法里写多少遍"HOLD 不是默认出口"，都吵不过一张费率表。连着几周里，HOLD 占了全部判断的 70%–94%；有一份报告把一只票的整条路径都画出来了，落款却还是 HOLD、仓位 N/A。
+这反而算好消息，因为它把故障定了位。很长一段时间里，我分不清一个稀泥 HOLD 到底是系统没*看懂*这只票、还是看懂了没*动手*——这两者要的是相反的修法。MU 把这事定了案：理解是在的，白纸黑字，还是提前写下的。所以摆在我面前的活不是"让它更聪明"，是把缺的那层翻译补上——那层把一个正确的判读转成一个下定决心的动作——并且别再把这两样当一件事打分：一张漂亮的地图最后落成 HOLD，不该因为地图漂亮就及格。
 
-这里没什么高深谜团，而这恰恰是重点。不是分析不行，也不是有个幽灵在到处搬家（尽管 ⚖️/🌀 那股"往中间拽"的力是真的）——是一个一个人的项目，把工时花在杠杆看着最大的地方，而仲裁者那套招式，只是还没排到队。修法已勾出轮廓，且刻意**不是**加第三个 agent、也不是逼着交易的规则：给仲裁者一层真正的招式——一条**凸形举证曲线**，让偏一点点便宜、让极端立场昂贵；再**给 HOLD 上和任何交易一样的税**（它是个决策、是一注，价码就是它守着的那份敞口，所以照样交出立场—理由—赔率）。跟别处一样的 心法/招式 老道理（🥋）：这把椅子程序有余、判断未立。只是——轮到它了。
+## 🧩 无脑 HOLD 不是什么深层缺陷——是重构时漏掉了一条规则
+
+于是漏水的地方是操作层，而这漏还有个具体形状：仲裁者**特别爱和稀泥。** 两位辩手分歧拉得很开——结算价差着 16–19 分——最终判断却落在离正中点不到两分的地方；连着几周里，70%–94% 的判断都是 HOLD。这条笔记的初稿，我伸手去够了个宏大的故事——一股在各个角色间反复搬家的偏见。可真去翻查之后，真相要小得多、也更难堪：**这是个回归 bug。**
+
+老的三辩手版本，对这事是有真规矩的——一条把举证负担挂在"你的立场离别人多远"上的曲线：跟大伙儿一致，你只需陈述自己的逻辑；跟一方决裂，你就欠对方一个最强反驳；同时跟两边都拉开，你就背上最重的交叉盘问。这条曲线，恰恰就是让"偏一点点便宜、极端立场昂贵"的那个东西——是它拦着辩论别默认滑向那个安全的中间。而在从三个 agent 迁到"两辩手 + 一仲裁者"的某一步里，**这条规则连同它寄居的那套结构，被悄悄删掉了。** 没有谁决定过让仲裁者取中；只是那个原本拦着它别取中的东西，就……没被搬过来。
+
+这就是老实的诊断，比"制度里有个幽灵"谦逊得多。一次大重构，挪的不只是代码；它会悄悄丢掉一些原本承重的规则，而你要等到几个月后、它们撑着的那个行为塌下来，才发现。仲裁者的整套招式在重建里变薄了（🥋 那条道理，落在最需要招式的那把椅子上）——无脑 HOLD 只是最扎眼的那根刺。修法一点都不巧妙：把举证曲线装回去，再**让 HOLD 交和任何交易一样的过路费**——今天一个不讲理由的 HOLD 文书成本为零，而一笔真操作得押上整套证据，光这道费率差，就足以把一切往中间拽。不是重新设计。是一条掉出去的规则，捡回来装上。
 
 ## 🎢 升级的 J 曲线
 
