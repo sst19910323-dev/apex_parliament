@@ -230,6 +230,12 @@ The old three-debater version had real rules for exactly this — a burden-of-pr
 
 That's the honest diagnosis, and it's a humbler one than "a ghost in the institution." A big refactor doesn't only move code around; it silently drops rules that were load-bearing, and you don't find out until the behavior they were holding up sags months later. The arbiter's whole skill layer got thin in the rebuild (the 🥋 lesson, landing on the one seat that most needs its 招式) — the mindless HOLD is just the most visible splinter. The repair isn't clever: put the burden curve back, and make **HOLD pay the same toll as any trade** — today an unreasoned HOLD costs zero paperwork while a real trade posts a full evidence stake, and that fee gap alone is enough to pull everything toward the middle. Not a redesign. A rule that fell out, put back.
 
+## 🧘 An even seven-out-of-ten beats a lopsided ten
+
+Laying the recent score-distribution histograms next to the outcome stats showed me something I'd never taken seriously: **balance is itself a kind of performance.** In the Cyber-Boxers era (🧧) the constitution was a set of abstract mantras I'd distilled by hand, and the model "sort of heard, sort of followed" each one — pull any single rule out and it was nowhere near precise, yet precisely because every rule ran at only seven-tenths force, nothing dominated, and the whole system stood surprisingly steady.
+
+The road through the refactor and task polished a great many rules to unprecedented sharpness — but a few important principles the model never noticed and I didn't remember, and they quietly fell out (🧩 was one of them). So the system went lopsided: the freshly-honed parts turned unusually strong, the dropped parts silently went to zero, and the distribution skewed. **An even seven carries its own balance; a jagged ten doesn't.** These last couple of days I've gone down the stats line by line, checking and patching each principle back, and only then did the balance return. And the payoff of patching it up: this version's ceiling sits a good deal higher than the Cyber-Boxers era ever reached.
+
 ## 🎢 The upgrade J-curve
 
 A secret I never wrote down: back when the cast went from 2 to 3 and the pivot joined, those first days were a mess too — bugs everywhere, precision falling off a cliff, several days of fixing before it recovered. This time, going from 3 back to 2 plus the ledger, the exact same movie: the first batch off the line scored *worse* than the permission regime it replaced, and again days of patching — until recently, when it finally pulled level with the old three-hander, with a visibly higher ceiling (the next post-mortem volume isn't out yet, but the tape already shows it). Two upgrades, one curve: **first into the ditch, then out of it — and the height you reach after climbing out is the new architecture's true altitude.**
@@ -475,6 +481,12 @@ task 在它该见效的地方见了效：分析是真的变深了，深得有时
 老的三辩手版本，对这事是有真规矩的——一条把举证负担挂在"你的立场离别人多远"上的曲线：跟大伙儿一致，你只需陈述自己的逻辑；跟一方决裂，你就欠对方一个最强反驳；同时跟两边都拉开，你就背上最重的交叉盘问。这条曲线，恰恰就是让"偏一点点便宜、极端立场昂贵"的那个东西——是它拦着辩论别默认滑向那个安全的中间。而在从三个 agent 迁到"两辩手 + 一仲裁者"的某一步里，**这条规则连同它寄居的那套结构，被悄悄删掉了。** 没有谁决定过让仲裁者取中；只是那个原本拦着它别取中的东西，就……没被搬过来。
 
 这就是老实的诊断，比"制度里有个幽灵"谦逊得多。一次大重构，挪的不只是代码；它会悄悄丢掉一些原本承重的规则，而你要等到几个月后、它们撑着的那个行为塌下来，才发现。仲裁者的整套招式在重建里变薄了（🥋 那条道理，落在最需要招式的那把椅子上）——无脑 HOLD 只是最扎眼的那根刺。修法一点都不巧妙：把举证曲线装回去，再**让 HOLD 交和任何交易一样的过路费**——今天一个不讲理由的 HOLD 文书成本为零，而一笔真操作得押上整套证据，光这道费率差，就足以把一切往中间拽。不是重新设计。是一条掉出去的规则，捡回来装上。
+
+## 🧘 均匀的七分力，好过偏科的十分力
+
+把近期的分数分布直方图和结果统计摊开，看出一件我此前没当回事的事：**平衡本身就是一种性能。** 赛博义和团时代（🧧），宪法是我亲手凝练的一把抽象心法，AI 对每一条都"大概听了听、大概执行"——单拎哪条出来都谈不上精确，可正因为每条都只使七分力，没有哪个方面特别强势，整个系统反而站得挺稳。
+
+重构上 task 的这一路，把好多规则打磨得前所未有的精细；可也有几条很重要的原则，AI 没注意到、我当时也没想起来，就这么漏掉了（🧩 就是其中一条）。于是偏科：被精修的那几块强得出奇，被遗漏的那几块悄悄归零，分布一下就歪了。**均匀的七分力自带平衡，参差的十分力反而没有。** 这两天对着统计一条条核、一条条补，才基本把平衡找回来——而补齐之后的这一版，理论上限比义和团时代高出一大截。
 
 ## 🎢 升级的 J 曲线
 
