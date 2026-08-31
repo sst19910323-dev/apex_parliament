@@ -202,33 +202,23 @@ So the real shape is two layers, and nearly every rule — from the debate as a 
 
 ![debate-and-task architecture](../images/debate_task_architecture.png)
 
-This is the update the 🥋 split was quietly building toward. Pulling mantra apart from move told me *what* the two layers are; this tells me *where the move layer lives, and who runs it.*
+An inversion I'd had backwards: I kept treating **evidence** as the thing the debate was chasing — go find the fact, bring it back. But finding a fact was never the point; the point was always to settle one small, specific **question**. So the first-class citizen isn't the evidence — it's the **task**: a work order that asks one question and comes back with an answer. Evidence dropped a rank, to *a task's output* — a leaf, not the tree.
 
-Start from an inversion I'd had backwards. I treated **evidence** as the thing the debate was chasing — go find the fact, bring it back. But finding a fact was never the point; the point was always to settle one small, specific **question**, and the verdict is just the composite price of all those small settlements. So the first-class citizen isn't the evidence — it's the **task**: a work order that asks a single question and comes back with an answer. Evidence dropped a rank, to *a task's output* — a leaf, not the tree.
+So the debater stops fighting solo: when a point needs real work — model a tariff shock through to CPI, read a stock against its true peers — it doesn't do the work itself, it files a task, and a **neutral runner** executes a fixed playbook and returns a structured result. Why route through a task at all? **Neutrality**: hand the judgment to an interested party and it quietly argues toward the answer it already wanted; a neutral runner's result can come back *hurting* the side that asked for it — that's what makes it evidence and not rhetoric. Pricing closes the loop: only a *verified* task earns a top-tier card, while a move-name shouted with nothing run behind it is priced as bare rhetoric, the lowest tier. Talking a good game is finally cheaper than proving one.
 
-That reframes what a debater is. It used to fight solo, carrying every analytical move in its own head as constitution text. Now it has a **team** behind it: when a point needs real work — model a tariff shock through to CPI, read a stock against its true peers, trace a news item's cause and effect — it doesn't do the work itself, it **files a task**, and a neutral **runner** executes a fixed playbook and returns a structured result. The Scout was the first of these teammates; the playbook-runners are the second through Nth. Same shape, generalized.
-
-Why route through a task at all, instead of letting the debater just reason it out? **Neutrality.** The moment you hand the judgment step to an interested party, you're back at the disease that started this whole project — the advocate quietly argues toward the answer it already wanted. A neutral runner following the playbook can come back with a result that *hurts* the side that asked for it. That's what makes it evidence and not rhetoric. So the rule closes with a price — the same staking logic as the ⚖️ note above: **strength is the execution result, not the volume of assertion.** Shout a move's name with nothing run behind it and it's priced as bare rhetoric, the lowest tier; only a *verified* runner task earns a top-tier card, and it must cite the task's ID. A machine reconciles every claim against the task ledger — a top card with no task behind it gets marked down automatically. Talking a good game is finally cheaper than proving one.
-
-The restraint matters as much as the mechanism. **Not everything becomes a task.** You don't summon a work-crew to look up one number: a single search, one data leg, the arbiter's own spot-check — those stay *direct* evidence, with no ticket at all. The shape is a three-layer nesting — debate ⊃ task ⊃ evidence — but the middle layer only appears when there's real work to delegate. Over-bureaucratizing is its own failure mode; a system that files a formal task to check the time is as broken as one that never checks.
-
-And this is where that 🥋 move layer finally gets a home. A move is no longer text the debater lugs around in a 100KB constitution it half-reads; it's an **index line** — three or four words, *see this → reach for that* — with the full playbook loaded only when the move is actually invoked. Which is exactly what I'm grinding on right now: the resident context drops by nearly half once the moves move out, a real token win — but dispatch adds round-trip latency, and a batch of tasks per round can inflate the round count if I let it. This whole current pass is that trade-off — keep the debater's head light and its moves sharp, without letting the task machinery tax every debate in time and tokens. It's landing in pieces; the tuning is live.
+The restraint matters as much as the mechanism: **not everything becomes a task.** You don't summon a work-crew to look up one number; a system that files a formal task to check the time is as broken as one that never checks.
 
 ## 🗺️ The map was right; the ship never turned — analysis and operation are two layers
 
-Task paid off where it was supposed to: the analysis got genuinely, sometimes startlingly deep. One MU session is the specimen — it read the whole round trip almost to the number, calling the drop into the high-880s and the recovery back toward 930 before any of it happened, the swings pinned with a precision I didn't know it had. And then it signed the report **HOLD, size N/A.** A flawless chart, and nobody at the wheel.
+MU is the specimen: it read the whole round trip almost to the number — the drop into the high-880s, the recovery back toward 930, all called before any of it happened — and then signed the report **HOLD, size N/A.** A flawless chart, and nobody at the wheel.
 
-That gap taught me something I'd been running past for a year: **analysis and operation are two different layers, and a perfect one on top does not make the one below.** Reading the market right is a *map*; deciding the single best move off that map — given where the price sits, what the odds pay, what a wrong step costs — is a separate act of *navigation*. The founding sin of this project was "talks like an analyst, trades like a gambler" (🗣️); this is its subtler cousin, one stage later — it *sees* like a pro, and then just… stands there. The analysis layer can be doing genuinely excellent work while the operation layer, quietly, converts almost none of it.
-
-Which is oddly good news, because it localizes the failure. For a long time I couldn't tell whether a mushy HOLD meant the system didn't *understand* the stock or didn't *act* on its understanding — and those need opposite fixes. MU settled it: the understanding was there, in ink, ahead of time. So the work in front of me isn't "make it smarter." It's to build the missing translation — the layer that turns a correct read into a committed move — and to stop scoring the two as one thing: a beautiful map that ends in HOLD should not pass just because the map was beautiful.
+That gap taught me something I'd been running past for a year: **analysis and operation are two different layers, and a perfect one on top does not make the one below.** Reading the market right is a *map*; deciding the single best move off it — where the price sits, what the odds pay, what a wrong step costs — is a separate act of *navigation*. Which is oddly good news, because it localizes the failure: I could finally tell whether a mushy HOLD meant the system didn't *understand* the stock or didn't *act* on its understanding — opposite fixes — and MU settled it, the understanding was there, in ink, ahead of time. So the job isn't "make it smarter"; it's to build the missing translation from a correct read to a committed move — and to stop scoring the two as one: a beautiful map that ends in HOLD should not pass just because the map was beautiful.
 
 ## 🧩 The mindless HOLD wasn't a deep flaw — the refactor had dropped a rule
 
-So the operation layer is where it leaks, and the leak has a specific shape: the arbiter **loves to split the difference.** The two advocates diverge hard — their settled prices sit 16–19 points apart — yet the final call lands under two points off the exact midpoint; across a stretch of weeks, 70–94% of all calls came out HOLD. My first draft of this note reached for a grand story — a bias that keeps migrating from role to role. The truth, once I actually went looking, is smaller and more embarrassing: **it's a regression.**
+For a while the arbiter **loved to split the difference**: the two advocates diverge hard — settled prices 16–19 points apart — yet the final call lands under two points off the exact midpoint, and across a stretch of weeks 70–94% of calls came out HOLD. My first instinct reached for a grand story — a bias that keeps migrating from role to role. Once I actually went looking, the truth was smaller and more embarrassing: **it's a regression.**
 
-The old three-debater version had real rules for exactly this — a burden-of-proof curve tied to how far your stance sat from the others: agree with the room and you just state your logic; break from one side and you owe its strongest counter-argument; stand alone against both and you carry the heaviest cross-examination. That curve is precisely what makes a slight tilt cheap and an extreme stance expensive — what stops a debate from defaulting to the safe middle. And somewhere in the migration from three agents to two-plus-an-arbiter, **that rule got quietly deleted along with the structure it lived in.** Nobody decided the arbiter should average; the thing that used to stop it from averaging just… wasn't carried over.
-
-That's the honest diagnosis, and it's a humbler one than "a ghost in the institution." A big refactor doesn't only move code around; it silently drops rules that were load-bearing, and you don't find out until the behavior they were holding up sags months later. The arbiter's whole skill layer got thin in the rebuild (the 🥋 lesson, landing on the one seat that most needs its 招式) — the mindless HOLD is just the most visible splinter. The repair isn't clever: put the burden curve back, and make **HOLD pay the same toll as any trade** — today an unreasoned HOLD costs zero paperwork while a real trade posts a full evidence stake, and that fee gap alone is enough to pull everything toward the middle. Not a redesign. A rule that fell out, put back.
+The old three-debater version had a real rule for exactly this — a burden of proof tied to how far your stance sat from the others: agree with the room and you just state your logic; break from one side and you owe its strongest counter-argument; stand alone against both and you carry the heaviest cross-examination. That curve is precisely what makes a slight tilt cheap and an extreme stance expensive — what stops a debate from defaulting to the safe middle. Somewhere in the migration to two-plus-an-arbiter, it got quietly deleted along with the structure it lived in; nobody decided the arbiter should average, the thing that used to stop it just wasn't carried over. A big refactor doesn't only move code around — it silently drops rules that were load-bearing, and you find out when the behavior they held up sags months later. The fix isn't clever: put the burden curve back, and make **HOLD pay the same toll as any trade.** Not a redesign — a rule that fell out, put back.
 
 ## 🧘 An even seven-out-of-ten beats a lopsided ten
 
@@ -454,39 +444,29 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 
 ![辩论与 task 架构](../images/debate_task_architecture.png)
 
-这正是 🥋 那次分离一直在悄悄铺垫的更新。把心法从招式里剥出来，告诉我这两层*是什么*；这一次，告诉我招式那层*住在哪、由谁来跑*。
+有个倒装我一直搞反了：我总把**证据**当成辩论追逐的东西——去把事实找回来。可找到一个事实从来不是目的，目的始终是把一个具体的小**问题**结算掉。所以一等公民不是证据，是 **task**：一张只问一个问题、带着答案回来的工作单。证据降了一级，成了 *task 的产出*——是叶子，不是那棵树。
 
-先从一个我一直搞反了的倒装说起。我一直把**证据**当成辩论追逐的东西——去把事实找回来。可找到一个事实从来不是目的；目的始终是把一个具体的小**问题**结算掉，而终裁不过是所有这些小结算的综合定价。所以一等公民不是证据，是 **task**：一张只问一个问题、带着答案回来的工作单。证据降了一级，成了 *task 的产出*——是叶子，不是那棵树。
+于是辩手不再单打独斗：一个点需要真功夫时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比——它不自己动手，而是发一张 task 单，由**中立的执行员（runner）**照固定 playbook 跑完、返回结构化结果。为什么非得走 task？**为了中立**：判断一交给利益相关方，它就会悄悄朝自己想要的答案去论证；而中立 runner 跑出的结果，可能反而**不利于**发单的那一方——这才叫举证，不是修辞。定价随之收口：只有 verified 的 task 才配得上最高档的牌，光喊招式名、背后什么都没跑的，按裸修辞算最低档。嘴上漂亮，终于比证明它更便宜了。
 
-这重新定义了辩手是什么。它过去单打独斗，把每一招分析动作都当宪法条文背在自己脑子里。现在它背后有一支**团队**：一个点需要真功夫时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比、理清一条新闻的前因后果——它不自己动手，而是**发一张 task 单**，由中立的**执行员（runner）**照一本固定的 playbook 跑完、返回结构化结果。Scout 是这支团队的第一个成员，playbook 执行员是第 2 到第 N 个。同一个形状，泛化开来。
-
-为什么非得走 task，而不干脆让辩手自己想明白？**为了中立。** 你一旦把判断那一步交给利益相关方，就又回到了这整个项目最初的病根——辩手会悄悄朝它本来就想要的答案去论证。而一个照 playbook 执行的中立 runner，跑出来的结果可能反而**不利于**发单的那一方。这才叫举证，不是修辞。所以规则用一个价格收口——和上面 ⚖️ 那条挂牌定价同一套逻辑：**强度是执行结果，不是嗓门大小。** 喊出一个招式名、背后什么都没跑，就按裸修辞定价、最低档；只有 verified 的 runner task 才配得上最高档的牌，而且必须引这张 task 的 ID。一台机器拿每条主张跟 task 台账对账——高档牌背后没有 task，自动降档。嘴上漂亮，终于比证明它更便宜了。
-
-克制和机制一样重要。**不是什么都变成 task。** 你不会为查一个数字就召来一支施工队：单次搜索、单条数据腿、仲裁者自己的抽查——这些仍是*直属*证据，一张单子都不开。形状是三层嵌套——辩论 ⊃ task ⊃ evidence——但中间那层只在真有活儿要发包时才出现。过度官僚化本身就是一种失败模式；一个为查看时间都要开正式 task 的系统，和一个从不查证的系统，一样是坏的。
-
-而这，正是 🥋 那个**招式层**终于安下家的地方。一招不再是辩手拖在一部 100KB、自己都只读一半的宪法里的文字；它是一行**索引**——三四个字，*看到这个 → 去够那个*——完整的 playbook 只在这招真被调用时才加载。这也恰是我此刻正在磨的事：招式搬出去后，常驻上下文差不多砍掉一半，是实打实的 token 收益——可发包带来往返延迟，一轮里并行发一批 task，一个不留神就会把轮数撑大。当前这一整轮，磨的就是这个取舍——让辩手脑子轻、招式利，又不让这套 task 机制在时间和 token 上给每一场辩论加税。它在一块块落地；调优正在进行。
+克制和机制一样重要：**不是什么都变成 task**。查一个数字不必召来一支施工队；一个为看时间都要开正式工单的系统，和一个从不查证的系统，一样是坏的。
 
 ## 🗺️ 图画对了，船却没掉头——分析和操作是两个层面
 
-task 在它该见效的地方见了效：分析是真的变深了，深得有时让我吃惊。MU 那一期就是标本——它把整条往返路径几乎按数字喊了出来，跌进 880 多、再弹回 930 附近，全在事情发生之前就说中了，波动被钉得之准，是我原先都不知道它有的本事。然后，它给这份报告落款：**HOLD，仓位 N/A。** 一张完美的海图，却没人掌舵。
+MU 那一期是个标本：它把整条往返路径几乎按数字喊了出来——跌进 880 多、再弹回 930 附近，全在事情发生之前就说中了。然后，它给这份报告落款：**HOLD，仓位 N/A。** 一张完美的海图，却没人掌舵。
 
-这道缝隙教会我一件我绕过去一年的事：**分析和操作是两个不同的层面，上面那层再完美，也不自动长出下面那层。** 把市场看对，是一张*地图*；从这张地图上定出当前唯一最优的那一步——看价格在哪、赔率赔多少、走错一步的代价是什么——是另一桩*导航*的活。这个项目的原罪是"顶着分析师的嘴、做着赌徒的手"（🗣️）；而这是它更隐蔽的表亲、晚一个阶段——它*看*得像个高手，然后就……杵在那儿。分析层可以在干着真正一流的活，而操作层却悄悄地，几乎一点都没转化过来。
-
-这反而算好消息，因为它把故障定了位。很长一段时间里，我分不清一个稀泥 HOLD 到底是系统没*看懂*这只票、还是看懂了没*动手*——这两者要的是相反的修法。MU 把这事定了案：理解是在的，白纸黑字，还是提前写下的。所以摆在我面前的活不是"让它更聪明"，是把缺的那层翻译补上——那层把一个正确的判读转成一个下定决心的动作——并且别再把这两样当一件事打分：一张漂亮的地图最后落成 HOLD，不该因为地图漂亮就及格。
+这道缝隙教会我一件绕了一年的事：**分析和操作是两个不同的层面，上面那层再完美，也不自动长出下面那层。** 把市场看对，是一张*地图*；从地图上定出当前唯一最优的那一步——价格在哪、赔率赔多少、走错的代价是什么——是另一桩*导航*的活。这反而算好消息：我终于分清了一个稀泥 HOLD 到底是没*看懂*、还是看懂了没*动手*——这两者要的是相反的修法。摆在面前的活不是"让它更聪明"，是补上那层把正确判读转成下定决心动作的翻译——并且别再把两样当一件事打分：一张漂亮的地图最后落成 HOLD，不该因为地图漂亮就及格。
 
 ## 🧩 无脑 HOLD 不是什么深层缺陷——是重构时漏掉了一条规则
 
-于是漏水的地方是操作层，而这漏还有个具体形状：仲裁者**特别爱和稀泥。** 两位辩手分歧拉得很开——结算价差着 16–19 分——最终判断却落在离正中点不到两分的地方；连着几周里，70%–94% 的判断都是 HOLD。这条笔记的初稿，我伸手去够了个宏大的故事——一股在各个角色间反复搬家的偏见。可真去翻查之后，真相要小得多、也更难堪：**这是个回归 bug。**
+有一阵子仲裁者**特别爱和稀泥**：两位辩手分歧拉得很开——结算价差着 16–19 分——终裁却落在离正中点不到两分的地方；连着几周，70%–94% 的判断都是 HOLD。我起初伸手去够一个宏大的故事——一股在各个角色间反复搬家的偏见；真翻查之后，真相要小得多、也更难堪：**这是个回归 bug**。
 
-老的三辩手版本，对这事是有真规矩的——一条把举证负担挂在"你的立场离别人多远"上的曲线：跟大伙儿一致，你只需陈述自己的逻辑；跟一方决裂，你就欠对方一个最强反驳；同时跟两边都拉开，你就背上最重的交叉盘问。这条曲线，恰恰就是让"偏一点点便宜、极端立场昂贵"的那个东西——是它拦着辩论别默认滑向那个安全的中间。而在从三个 agent 迁到"两辩手 + 一仲裁者"的某一步里，**这条规则连同它寄居的那套结构，被悄悄删掉了。** 没有谁决定过让仲裁者取中；只是那个原本拦着它别取中的东西，就……没被搬过来。
-
-这就是老实的诊断，比"制度里有个幽灵"谦逊得多。一次大重构，挪的不只是代码；它会悄悄丢掉一些原本承重的规则，而你要等到几个月后、它们撑着的那个行为塌下来，才发现。仲裁者的整套招式在重建里变薄了（🥋 那条道理，落在最需要招式的那把椅子上）——无脑 HOLD 只是最扎眼的那根刺。修法一点都不巧妙：把举证曲线装回去，再**让 HOLD 交和任何交易一样的过路费**——今天一个不讲理由的 HOLD 文书成本为零，而一笔真操作得押上整套证据，光这道费率差，就足以把一切往中间拽。不是重新设计。是一条掉出去的规则，捡回来装上。
+老的三辩手版本本有一条真规矩：举证负担挂在"你的立场离别人多远"上——跟大伙儿一致只需陈述逻辑，跟一方决裂就欠一个最强反驳，两边都拉开就背最重的交叉盘问。正是这条曲线让"偏一点点便宜、极端立场昂贵"，拦着辩论别滑向安全的中间。而在迁到"两辩手 + 一仲裁者"的某一步里，它连同寄居的结构**被悄悄删掉了**——没有谁决定过让仲裁者取中，只是拦着它取中的东西没被搬过来。大重构挪的从来不只是代码，还会悄悄丢掉承重的规则，等它撑着的行为塌下来你才发现。修法一点都不巧妙：把举证曲线装回去，再**让 HOLD 交和任何交易一样的过路费**。不是重新设计，是一条掉出去的规则，捡回来装上。
 
 ## 🧘 均匀的七分力，好过偏科的十分力
 
 把近期的分数分布直方图和结果统计摊开，看出一件我此前没当回事的事：**平衡本身就是一种性能。** 赛博义和团时代（🧧），宪法是我亲手凝练的一把抽象心法，AI 对每一条都"大概听了听、大概执行"——单拎哪条出来都谈不上精确，可正因为每条都只使七分力，没有哪个方面特别强势，整个系统反而站得挺稳。
 
-重构上 task 的这一路，把好多规则打磨得前所未有的精细；可也有几条很重要的原则，AI 没注意到、我当时也没想起来，就这么漏掉了（🧩 就是其中一条）。于是偏科：被精修的那几块强得出奇，被遗漏的那几块悄悄归零，分布一下就歪了。**均匀的七分力自带平衡，参差的十分力反而没有。** 这两天对着统计一条条核、一条条补，才基本把平衡找回来——而补齐之后的这一版，理论上限比义和团时代高出一大截。
+重构上 task 的这一路，把好多规则打磨得前所未有的精细；可也有几条很重要的原则，AI 没注意到、我当时也没想起来，就这么漏掉了（🧩 就是其中一条）。于是偏科：被精修的那几块强得出奇，被遗漏的那几块悄悄归零，分布一下就歪了。**均匀的七分力自带平衡，参差的十分力反而没有。** 这两天对着统计一条条核、一条条补，才基本把平衡找回来——当然，补齐之后的这一版，理论上限比义和团时代高出一大截。
 
 ## 🎢 升级的 J 曲线
 
