@@ -11,7 +11,7 @@ In one line: **a cast of differently-tempered AIs argues over real market data e
 
 ![architecture](../images/architecture-v2.png)
 
-Two advocates argue on stage: the bull **Zealot** and the profit-taking **Reaper**. An **Arbiter** presides — refereeing which evidence counts and writing the final record (it took over the old Chronicler's archivist job) — while a corps of neutral **Scouts** is dispatched on demand to fetch evidence for either side. *(An earlier third pole, the damper **Fulcrum**, has since been retired — see ♻️ below for the data that changed my mind.)* The debaters share no memory with each other, and re-fix their bearings against the current real data every round; the whole argument is archived, so you can walk back through it step by step and audit it.
+Two advocates argue on stage: the bull **Zealot** and the profit-taking **Reaper**. An **Arbiter** presides — stamping evidence, keeping the priced ledger of concessions, setting each round's agenda, and writing the final record (it took over the old Chronicler's archivist job); it holds no stance of its own, but its ruling must follow the ledger — while a corps of neutral **Scouts** is dispatched on demand to fetch evidence for either side. *(An earlier third pole, the damper **Fulcrum**, has since been retired — see ♻️ below for the data that changed my mind.)* The debaters share no memory with each other, and re-fix their bearings against the current real data every round; the whole argument is archived, so you can walk back through it step by step and audit it.
 
 ## 🌱 Origins: I just wanted to be lazy
 
@@ -253,7 +253,7 @@ Questions and discussion welcome: **sst19910323@gmail.com**
 
 ![架构](../images/architecture-v2.png)
 
-台上两位辩手：多头 **Zealot** 和止盈的 **Reaper**。一位 **Arbiter（仲裁者）** 主持——只裁"哪条证据算数"、并写最终记录（接管了原来史官的存档活儿）；另有一队中立的 **Scout（取证员）** 按需派出、为两边取证。*（早先还有第三极、当阻尼器的支点 **Fulcrum**，如今已退役——为什么见下面的 ♻️。）* 辩手之间不共享记忆、每一轮都重新对着当期真实数据定位；吵完的全过程都存档，可以一步步走回去审计。
+台上两位辩手：多头 **Zealot** 和止盈的 **Reaper**。一位 **Arbiter（仲裁者）** 主持——给证据盖章、管着那本标了价的退让账、每轮定议程、并写最终记录（接管了原来史官的存档活儿）；它没有自己的立场，但终裁必须跟着账本走；另有一队中立的 **Scout（取证员）** 按需派出、为两边取证。*（早先还有第三极、当阻尼器的支点 **Fulcrum**，如今已退役——为什么见下面的 ♻️。）* 辩手之间不共享记忆、每一轮都重新对着当期真实数据定位；吵完的全过程都存档，可以一步步走回去审计。
 
 ## 🌱 缘起：本来只想偷个懒
 
