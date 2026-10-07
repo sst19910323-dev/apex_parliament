@@ -35,46 +35,26 @@ Buying and selling are two mutually exclusive states of mind. Stuff both into on
 
 Three AIs squabbling like mad — you'd assume the output must be a mess. The opposite: its consistency is far higher than "each one quietly thinks it through alone." **Stability never comes from stillness; it comes from sustained opposition** — each side is watched and pressed by the other two, so no one can quietly veer off. A bicycle stays up by speed; a debate converges by opposition.
 
-## 🛤️ The damper beats both "two-way shouting" and "averaging many samples"
-
-With only two sides, one always accidentally gains the upper hand and talks the other into giving up early, and the debate collapses one-sided. I tried two ways to prevent this. First was "run several samples and average" — but averaging only washes out random noise, not the **systematic** error of being talked off course by slick rhetoric (that kind of error leans the same way in every sample, so averaging preserves it intact). Then I added a third pole, the pivot **Fulcrum**, as a damper: like a monorail train — the more it tilts to one side, the larger the **restoring force** that pushes it back — a textbook **negative-feedback** loop; the harder any side pulls toward the extreme, the more it has to take fire from the other two AIs at once, from different directions. Two sides facing off tip over easily; three sides plus a damper is what actually converges steadily. (To be clear: this damper only *behaves* a bit like the early "risk officer" — both lean cautious — but it's an **independent design**: the risk officer was a mouth serving the bearish side; the damper takes no side, it only supplies a "restoring torque." Alike in behavior, different in soul.) *(This pivot was later removed — see ♻️ for the data that changed my mind.)*
-
 ## ♻️ 1 → 2 → 3, and back to 2
 
 The cast's headcount came full circle: **1 → 2 → 3 → back to 2.**
 
 - **1**: at first a single agent, chasing pumps and dumps.
 - **2**: split into the optimistic Zealot and the bean-counting Reaper, so correction could finally point both ways.
-- **3**: added a third pole, the pivot Fulcrum, as a damper, to keep a two-way standoff from collapsing one-sided.
+- **3**: added a third pole, the pivot **Fulcrum**, as a damper.
 - **2**: now the pivot has been removed.
 
-I removed it because several things happened at once, turning the damper from cure into obstacle: the models kept getting smarter, I wrote the constitution's rules more and more explicitly, and I gave the debate an online-evidence mechanism. The gaps the pivot was there to plug, a smarter model plus harder rules can now plug on their own; keeping it on stage mostly just got in the way — it leans toward the middle by nature, diluting a call that should have a conclusion into a failing-grade mush.
+**I added it** because with only two sides, one always accidentally gains the upper hand and talks the other into giving up early, and the debate collapses one-sided. "Run several samples and average" can't rescue that — averaging only washes out random noise, not the **systematic** error of being talked off course by slick rhetoric (that kind of error leans the same way in every sample, so averaging preserves it intact). A damper is different: like a monorail train — the more it tilts to one side, the larger the restoring force that pushes it back — a textbook **negative-feedback** loop; the harder any side pulls toward the extreme, the more it has to take fire from the other two AIs at once, from different directions. (To be clear: it only *behaves* like the early "risk officer" — both lean cautious — but it's an independent design: the risk officer was a mouth serving the bearish side; the damper takes no side, it only supplies a "restoring torque." Alike in behavior, different in soul.)
 
-This wasn't a gut call — the system's own post-mortem measured it: over n=56 back-tests, the pivot **destroyed value 11 times and intercepted 11 times, a tie**, and even its "good saves" averaged only 58, below the pass line of 70 — the quantified form of "dead HOLD, missing opportunities." Its one useful function, rebuttal, was distributed into the two advocates to internalize; no need for a dedicated pole.
+**I removed it** because several things happened at once, turning the damper **from cure into obstacle**: the models kept getting smarter, the constitution's rules got more and more explicit, and the debate gained online evidence. The gaps the pivot was there to plug, a smarter model plus harder rules can now plug on their own; keeping it on stage mostly just got in the way — it leans toward the middle by nature, diluting a call that should have a conclusion into a failing-grade mush. This wasn't a gut call — the system's own post-mortem measured it: over n=56 back-tests, the pivot **destroyed value 11 times and intercepted 11 times, a tie**, and even its "good saves" averaged only 58, below the pass line of 70 — the quantified form of "dead HOLD, missing opportunities." Its one useful function, rebuttal, was distributed into the two advocates to internalize; no need for a dedicated pole.
 
-The bottom line: **the pivot was a crutch fitted for "a dim model + limited data + crude rules." Once all three were upgraded, the crutch cost more than it was worth, so off it came.** Which is exactly the later note coming due — the smarter the model, the more the constitution decays from textbook into procedural law.
+The bottom line: **the pivot was a crutch fitted for "a dim model + limited data + crude rules." Once all three were upgraded, the crutch cost more than it was worth, so off it came.**
 
 ![flowchart](../images/flowchart-v2.png)
 
-## 🧮 Bayesian concession: from "if you can't refute it, concede" to "the evidence decides"
-
-Bayesian updating has always been one of this system's most important principles: when your opponent brings valid new evidence, you must adjust — no stonewalling by sheer stubbornness. That doesn't change. What changed is its **trigger**.
-
-The original idea was: **"if you can't fully refute it, you must partially concede."** In the early closed, data-limited, offline setting, that was sound — many claims genuinely couldn't be checked or refuted on the spot, so making "can't refute → give a step" the default forced everyone to stop stonewalling.
-
-But once the models got smart and search was wired in, the old rule became an **obstacle** — because "can't refute" no longer means "the other side is right"; it may just mean "I can't look it up right now." So it fed two bad habits at once: **mindless HOLD** (neither side can refute the other, so both concede a step back to the mushy middle) and **contrarian trolling** (lob out inherently unfalsifiable risk claims — you can't refute them anyway, so I pocket a free concession). Bear arguments are inherently harder to falsify, so the rule was also structurally bearish.
-
-Now, with online evidence, it's been changed to a new mode: concession's precondition is no longer "I have nothing on hand" but "**already verified in a directed way, and failed to overturn.**" Only `verified` evidence has standing to demand a concession; a bare, unbacked cry of "risk" extorts nobody. The line isn't drawn at "how much to concede" but at "**who has standing to demand it**" — with proof you must yield (no stonewalling), without proof you can't extort (no mindless middle). *(This "standing" regime, too, later proved over-tightened — see 🌀 below for how, and what replaced it.)*
-
-## ⏰ From a fixed alarm clock to a (still-in-progress) dynamic rhythm
-
-Early on it was LangGraph's mechanical scheduling plus a pile of free keys, capable only of **fixed-frequency polling**: hammering the API when it shouldn't, stuck on cooldown when it should fire — CPI would print and mine still had to wait until tomorrow to fetch it, and if the endpoint hiccupped the request just failed. Now it's agents **searching on demand**: this data is all findable, just messy, slow to update, and annoying to dig up — which turns out to suit an AI fine; even those normally-hard-to-find European and Japanese fundamentals and news now make it into the debate.
-
-As for smarter **dynamic scheduling** — the AIs proposing the next round's timing after they argue, periodic glances at the broad market, calling agents in for overtime when things go extreme — that stays a future plan for now. The one bottleneck is **quota**: whether it's API spend or the Claude Code / GPT / Codex usage caps, nothing yet lets it breathe freely on demand.
-
 ## 🔦 Getting an AI to "find the thing it itself wants to find" is surprisingly hard
 
-Doing it for real, I found LLM search is nowhere near "just call an API" — **getting an AI to dig along some faint hunch and verify an intuition it hasn't even fully articulated is genuinely hard**. This weakness showed nakedly in the DeepSeek + Linkup API combo: it searched, sure, but never quite on point. GPT and Claude with **native search** did far better. So now, for both debate and post-mortem, I lean on the CC and Codex versions as much as possible — even with their lower quota. What I'm busy with right now is scheduling and rationing that pitiful quota.
+Doing it for real, I found LLM search is nowhere near "just call an API" — **getting an AI to dig along some faint hunch and verify an intuition it hasn't even fully articulated is genuinely hard**. This weakness showed nakedly in the DeepSeek + Linkup API combo: it searched, sure, but never quite on point. GPT and Claude with **native search** did far better. So now both debate and post-mortem are **driven mainly by Codex** — tight as the quota is, that still beats searching off-target. Evidence-gathering itself got an upgrade along the way: what used to be "one round of searching" is now split into **two explicit layers, evidence and task**.
 
 ## 🛰️ Lateral evidence: from "a make-do reference" to "asking on demand"
 
@@ -88,7 +68,9 @@ So this version I finally committed to building **active lateral evidence** on t
 
 ## 🫁 Giving the system a way to "breathe"
 
-This thing started as a static LangGraph, passively waiting to be fed once from outside. Later I built a parallel Claude Code version that proved "let the AI go search for data and news itself" actually works — and that's what led to the current version. The headache right now is making it **breathe steadily**: it currently leans on a Hermes agent as a "dumb alarm clock" — dumb by necessity, since it only wakes Claude Code at fixed times; the "schedule itself by reading the situation" smart version is on hold for lack of money (quota). And even this dumb clock keeps throwing instability and permission gremlins, which I've been fixing these past couple of days. Most systems that run smoothly have a stretch behind them, unseen, where they couldn't catch their breath.
+This thing started as a static LangGraph: mechanical scheduling plus a pile of free keys, capable only of **fixed-frequency polling** — hammering the API when it shouldn't, stuck on cooldown when it should fire; CPI would print and mine still had to wait until tomorrow to fetch it. The data half later got solved cleanly: I built a parallel Claude Code version that proved "let the agent **go search on demand**" actually works — even those normally-hard-to-find European and Japanese fundamentals and news now make it into the debate.
+
+The hard half is rhythm: making it **breathe steadily**. The ideal, fully automatic scheduler — the AIs proposing the next round's timing after they argue, overtime when the market goes extreme — has stayed stuck on two things: **quota** (Codex consumption has been enormous lately; it can no longer sustain even one round a day) and **an IBKR reconnect that needs me physically present**. For a while a Hermes agent served as a "dumb alarm clock," waking Claude Code at fixed times, and automating it produced nothing but instability and permission gremlins. Wait for it to become fully stable? That day wasn't coming. So I settled on a **semi-smart mode**: the trigger is still manual, but the conversational agent first reads the next round's timetable, when the last round finished, the remaining usage and the quota-reset signals, and works out how many debates this run should fire. The root cause, bluntly, is being broke — yet the scheduler that poverty produced is the one that shipped first. Most systems that run smoothly have a stretch behind them, unseen, where they couldn't catch their breath.
 
 ## 🧭 Continuity must be earned, never inherited
 
@@ -108,7 +90,11 @@ For a while QQQ's and SPY's numbers sat very close together, and the AI actually
 
 ## 🃏 It went crazy? No — it computed to the fifth level
 
-Two unrelated incidents won me over. Once, **NVIDIA's earnings clearly beat, yet it independently called SELL two days running** — my first reaction was "the code has a bug," and it turned out the market had the bug (i.e., I'd missed something). Another time, the **Iran geopolitical panic**, sell-offs everywhere, and it calmly stayed long, with an air of: "I knew this news ages ago; you humans, really — cry when it drops, cheer when it rises; learn to compute the odds." Two unrelated events pointing at the same thing: feed it enough data and its analysis really can compute to the fifth level. The mark of a mature system isn't that its judgment makes you nod — it's that it starts to surprise its own creator, and is proven right after the fact.
+My confidence in it went through three stages. At first it was only a **belief**: the AI talks finance so fluently that I figured the potential had to be there — pure intuition, no evidence.
+
+Then two unrelated incidents hammered that belief into something **felt**. Once, **NVIDIA's earnings clearly beat, yet it independently called SELL two days running** — my first reaction was "the code has a bug," and it turned out the market had the bug (i.e., I'd missed something). Another time, the **Iran geopolitical panic**, sell-offs everywhere, and it calmly stayed long, with an air of: "I knew this news ages ago; you humans, really — cry when it drops, cheer when it rises; learn to compute the odds." Two unrelated events pointing at the same thing: feed it enough data and it really can compute to the fifth level.
+
+The third stage is where **statistics** take over: once the post-mortem had banked enough samples, on the "100 for a hit, 0 for a whiff" scale the **median score holds above 70**, and wrecks are rare — the masterpieces aren't survivorship bias, they're the distribution. The work now is turning the fifth level from an occasional possession into steady output: systematized, at scale. The mark of a mature system isn't that its judgment makes you nod — it's that it starts to surprise its own creator, and is proven right after the fact.
 
 ## 🎭 The AI's real danger isn't being wrong — it's being wrong as beautifully as it's right
 
@@ -120,7 +106,9 @@ Hence the rewards and penalties: **getting the direction backwards is the real e
 
 ## 🔁 The post-mortem: not "right or wrong," but "could it have known at the time?"
 
-In a debate, Scouts handle verification; the post-mortem leans on search the same way, only after the fact. The flow now runs in four steps. **Step one, check the lines**: has it been hitting lines it shouldn't — you can't keep slamming into the stop-loss line, for instance; the pattern of line-hits is itself a medical chart. **Step two, composite scoring**: at fixed horizons (3 days, 20 days), read how the price actually moved, and score the report and the operation it called 0–100 as a base (0 for a wrong-direction call, 50 for a miss — read correct, not acted on — 100 for a hit); then fold the line-hits, the short-term directional call, and the reasoning it gave into one overall grade. **Step three, deep-read by default**: unless the call landed square, go back and re-read the original data and searches from the time — this flipped from the early "review only on error" to "**only a clean hit earns an exemption**." **Step four, attribution**, in three bins: a **black swan** — unknowable from the information available then, not its fault, that belongs to the odds; a **weak signal** — the clue was in the dossier, faint but there: half the fault; an **analysis failure** — everything was in hand and one step of the reasoning landed on air: entirely its fault. Only the last two are correctable errors, and only they qualify to become BP's "gradient."
+In a debate, Scouts handle verification; the post-mortem leans on search the same way, only after the fact. The flow now runs in four steps. **Step one, check the lines**: has it been hitting lines it shouldn't — you can't keep slamming into the stop-loss line, for instance; the pattern of line-hits is itself a medical chart. **Step two, composite scoring**: at fixed horizons (3 days, 20 days), read how the price actually moved, and score the report and the operation it called 0–100 as a base (0 for a wrong-direction call, 50 for a miss — read correct, not acted on — 100 for a hit); then fold the line-hits, the operation it called, the size of the move, and the reasoning it gave into one overall grade — a call that lands dead-on goes straight to near-full marks and skips review. **Step three, deep-read by default**: unless the call landed square, go back and re-read the original data and searches from the time — this flipped from the early "review only on error" to "**only a clean hit earns an exemption**." **Step four, attribution**, in three bins: a **black swan** — unknowable from the information available then, not its fault, that belongs to the odds; a **weak signal** — the clue was in the dossier, faint but there: half the fault; an **analysis failure** — everything was in hand and one step of the reasoning landed on air: entirely its fault. Only the last two are correctable errors, and only they qualify to become BP's "gradient."
+
+There is one more boundary of exemption: if the report said explicitly at the time that it could only see as far as some **event node** and was uncertain beyond it — an event node, mind, not a threshold — and that turned out to be so, then what the price did after the node is not on it; and if it got the stretch after the node right as well, that's the fifth level, and it earns a commendation.
 
 The post-mortem still doesn't need the debate's adversarial machinery: the deterministic price action is already on the table, and its one real requirement is search. So the reckoner remains a single agent working linearly — an early build with grounding + Linkup search attached proved costly, and it moved to borrowing Claude Code in its idle hours as the reckoner, chosen for being both free at that moment and search-equipped. This part is no longer "being tuned" — it runs, and turns out post-mortem volumes one after another.
 
@@ -132,7 +120,7 @@ The reason is mundane: the reports are now long and professional, and I can bare
 
 That is backpropagation: the debate is the forward pass, the post-mortem computes error against the real label, the review abstracts that error into a gradient, and editing the constitution and architecture is the weight update. Except the "gradient" here isn't a number but a lesson distilled by an AI; the "weights" aren't a matrix but that constitution and this architecture. **Removing the pivot and rewriting the Bayesian rule were the first batch of big updates BP produced; the bookkeeping protocol, staked pricing, and the mantra/move split are the second** — even the "centripetal force moved house" diagnosis was itself something BP measured out of the behavior distributions.
 
-BP has stepped in pits of its own, and the slyest one is this: **post-mortem scores can lie**. After one round of changes the average score jumped a dozen-plus points, and I nearly popped the champagne — until a closer look showed the market in those days was a third calmer than the comparison window, while the system was outputting "neutral" two-thirds of the time: **in a market that barely moves, neutral is right by default**. The score was rising, not one of the mechanism gauges had budged, and the gain was a gift from the regime. Two iron rules came out of it: align volatility (regime) before comparing scores, and **measure first, then touch the mechanism** — before steering by some signal, prove that signal actually correlates with being right.
+BP has stepped in pits of its own, and the slyest one is this: **post-mortem scores can lie**. After one round of changes the average score jumped a dozen-plus points, and I nearly popped the champagne — until I chased it all the way down and the culprit was a Codex bug: it apparently hadn't loaded the right file, and the scores themselves were wrong. A few rounds of grinding through pits like this have left the post-mortem rules far more complete; along the way I also spot-checked the grading: the same batch of reviews scored once by Codex and once by Claude differed by 0.6 points on average and 3 at most, with much the same reasons given — the reckoner's seat isn't picky about the model. But the "scores can lie" lesson wasn't wasted; it left two iron rules: align volatility (regime) before comparing scores, and **measure first, then touch the mechanism** — before steering by some signal, prove that signal actually correlates with being right.
 
 One aside: BP and the lateral-evidence idea above were both sketched back in early 2026, on nothing but a hunch that it should be done this way — and they did pan out; it just took the better part of a year from idea to running code. Not because "good design deserves to wait" — bluntly, this is a one-person **labor of love**, with no resources to build fast, so it gets ground out piece by piece as time allows.
 
@@ -150,53 +138,45 @@ The same constitution on different models gives wildly different results — bec
 
 There's also a counterintuitive little finding: **higher temperature is actually better** — the model is more flexible, and no extra hallucinations show up. The real trouble is a dim model at low temperature: rigid, parroting, picking fights with everyone, yet especially easy to fool with a stretch of pretty rhetoric (loudest in nitpicking, emptiest in conviction).
 
-## 📜 To a dim model the constitution is a textbook; to a smart one it's procedural law
-
-For a dim model, the constitution is a corrector — leave out "downweight hindsight" and it really will chase pumps and dumps; for a smart model, the corrective function depreciates, but "alignment" and "identity anchoring" appreciate: the smarter it is, the more it needs to be welded into its role, because it's more capable of quietly sliding out of character and rationalizing the slip seamlessly. The stronger the model, the more the weight of constraint shifts from "teaching it how to think" to "keeping it from crossing the line."
-
 ## 📏 The four words "MACD turned negative" don't constitute an argument
 
 To become an argument, it must report both **magnitude** (hugging the threshold, or already far from it?) and **direction** (widening, or converging?); a small crossing hugging the line is noise by default. This rule blocks both sides: it blocks the bear's "−1.7, bears confirmed" and the bull's "RSI is only 53, not overbought yet" — an indicator is a measuring scale, not a 0/1 switch.
 
+Looking back, this small rule was the starting point of the whole **quantification road**: bookkeeping, staked pricing, tasks — all of them do the same thing, replacing fuzzy qualitative talk with dependable quantitative computation.
+
 ## 🔎 Outputs need auditing; the inputs fed in need it more
 
-Two gates. First, **semantic precision**: the AI is very good at using vague phrasing to make an "inference" sound like it's "quoted straight from data," or at carrying you off with a scaleless word like "clearly on the weak side." Second, **provenance**: a message decays a layer in credibility each time it changes hands — president tweets → wire service quotes → data vendor forwards → into the dossier; no link lied, but the source chain evaporates layer by layer, and in the end the system mistakes "verbal pressure" for "policy enacted." Back when there were only free news sources this pit was deepest: the AI had no way to know the cause and effect, and forming expectations off layer upon layer of reposting bred wrong ones. So now the AI raises a verification **task** in the debate itself, and a neutral Scout goes online to piece together the cause and effect — turning "a witness who can't be reached" into "one taking the stand," which raises the ceiling on the dossier. (An aside: being misled by news, and "the AI computes odds more coolly than people do," have coexisted all along; but so far the latter wins out — it really does keep its composure better than we do.)
+Two gates. First, **semantic precision**: the AI is very good at using vague phrasing to make an "inference" sound like it's "quoted straight from data," or at carrying you off with a scaleless word like "clearly on the weak side." Second, **provenance**: a message decays a layer in credibility each time it changes hands — president tweets → wire service quotes → data vendor forwards → into the dossier; no link lied, but the source chain evaporates layer by layer, and in the end the system mistakes "verbal pressure" for "policy enacted." Back when there were only free news sources this pit was deepest: the AI had no way to know the cause and effect, and forming expectations off layer upon layer of reposting bred wrong ones. So now the AI raises a verification request in the debate itself, and a neutral Scout goes online to piece together the cause and effect, filed as individual pieces of **evidence** — turning "a witness who can't be reached" into "one taking the stand," which raises the ceiling on the dossier. (An aside: being misled by news, and "the AI computes odds more coolly than people do," have coexisted all along; but so far the latter wins out — it really does keep its composure better than we do.)
 
 ## 🌀 The centripetal force didn't die — it moved house
 
-After the pivot was retired and concession re-gated on verified evidence, I waited for the post-mortem to applaud. Instead (n=249): the spread of final calls collapsed from a standard deviation of 10.6 to 4.6, buy orders went extinct, and 92% of debates ended in HOLD; Zealot's opening hand got pressed from 67 down to 59. Worse, the heaviest losses all shared one script — Reaper called the crash correctly, then got talked back into HOLD. The set of "heavy losses" and the set of "the correct minority, converged away" almost perfectly coincide.
+Bayesian concession is one of this system's most important principles: when your opponent brings valid new evidence, you must adjust — no stonewalling by sheer stubbornness. The principle never moved. What kept moving is the **trigger** — and it hit a wall at both ends.
 
-The diagnosis reads like a fable. v1 priced concession at zero — "can't refute it? give a step" — and 93% of everything mushed toward the middle. v2 priced concession at infinity — only verified evidence can move you — and everyone simply stopped moving. Two dead ends of the same road. Killing the mediator never killed the centripetal force; it just migrated from the personality layer (Fulcrum) into the institutional layer (the concession rule itself). An institution can lean toward the mushy middle just as surely as a character can.
+**v1**: "if you can't fully refute it, you must partially concede." In the early closed, offline setting that was sound: claims couldn't be checked on the spot, so making "can't refute → give a step" the default forced everyone to stop stonewalling. But once the models got smart and search was wired in, "can't refute" no longer meant "the other side is right" — it might just mean "I can't look it up right now." So the rule fed two bad habits: **mindless HOLD** (neither side can refute the other, so both concede a step back to the mushy middle) and **contrarian trolling** (lob out inherently unfalsifiable risk claims and pocket a free concession; bear arguments are harder to falsify, so it was structurally bearish too). Hence **v2**, the "standing" regime: only `verified` evidence — "**already checked in a directed way, and not overturned**" — has standing to demand a concession; with proof you must yield, without proof you can't extort.
 
-## 🧾 From "may I move?" to "is this move on the books?"
+With the pivot retired and the standing regime in place, I waited for the post-mortem to applaud. Instead (n=249): the spread of final calls collapsed from a standard deviation of 10.6 to 4.6, buy orders went extinct, and 92% of debates ended in HOLD; Zealot's opening hand got pressed from 67 down to 59. Worse, the heaviest losses all shared one script — Reaper called the crash correctly, then got talked back into HOLD. The diagnosis reads like a fable: **v1 priced concession at zero, and 93% of everything mushed toward the middle; v2 priced it at infinity, and everyone simply stopped moving.** Two dead ends of the same road. Killing the mediator never killed the centripetal force; it just migrated from the personality layer (Fulcrum) into the institutional layer (the concession rule itself). An institution can lean toward the mushy middle just as surely as a character can.
 
-The remedy was a change of legal system: a **bookkeeping protocol**. Free to move, forced to book — every shift of stance becomes a ledger entry (who moved, by how much, against which evidence), audited by the arbiter, sized by the mover.
+## 🧾 Pricing a concession: book it, plug the leak, post the stake
 
-Then the mid-course check (n=49) delivered the comedy: the institution landed beautifully — ledgers in every round, structured triggers in every report, audit language, entry numbers duly cited — and behavior moved even *less* than before. Given the freedom to size their own concessions, the debaters chose a median of **3 points** — a stingier exchange rate than the mechanical table the reform had just abolished. And "nobody moves a single point all game" tripled to 27% of debates. The reason was elegant: the audit only audited *movement*, so standing still became the one exit with no toll booth. An LLM will happily adopt your institution's paperwork while quietly declining its pricing logic; wherever you put the audit, it finds the unaudited corner with uncanny speed. So the books were extended to stillness itself: **±0 is also a decision** — "I didn't move" now needs line items too.
+After the concession rule hit a wall at both ends, the remedy was a change of legal system: a **bookkeeping protocol**. Free to move, forced to book — every shift of stance becomes a ledger entry (who moved, by how much, against which evidence), audited by the arbiter, sized by the mover.
 
-## ⚖️ Taking the middle isn't laziness — it's arithmetic
+Then the mid-course check (n=49) delivered the comedy: the institution landed beautifully — ledgers in every round, structured triggers in every report, audit language, entry numbers duly cited — and behavior moved even *less* than before: the debaters chose a median concession of **3 points** — a stingier exchange rate than the mechanical table the reform had just abolished. And "nobody moves a single point all game" tripled to 27% of debates. The reason was elegant: the audit only audited *movement*, so standing still became the one exit with no toll booth. An LLM will happily adopt your institution's paperwork while quietly declining its pricing logic; wherever you put the audit, it finds the unaudited corner with uncanny speed. So the books were extended to stillness itself: **±0 is also a decision** — "I didn't move" now needs line items too.
 
-The next post-mortem (n=161) caught the next culprit: the final verdict was computing an average. 55% of verdicts landed dead center between the two sides' closing stances, at almost symmetric distances; Zealot's final round stood at 58+ in 92 debates — the verdict followed in three. And I couldn't even be angry, because the arbiter was doing exactly what it was built to be: an auditor with no stance of its own, facing two rule-compliant closing positions, has no basis to prefer either. Splitting the difference isn't sloth; it's the mathematically inevitable output of the role as specified.
+The post-mortem after that (n=161) caught the next culprit: **the final verdict was computing an average**. 55% of verdicts landed dead center between the two sides' closing stances; Zealot's final round stood at 58+ in 92 debates — the verdict followed in three. And I couldn't even be angry, because the arbiter was doing exactly what it was built to be: an auditor with no stance of its own, facing two rule-compliant closing positions, has no basis to prefer either. **Taking the middle isn't laziness — it's arithmetic**, the mathematically inevitable output of the role as specified. The tempting fix — give the arbiter a stance — is just resurrecting Fulcrum with better branding (the rules now say it in so many words: **mediation is banned**; an arbiter proposing a compromise is the pivot's ghost).
 
-The tempting fix — give the arbiter a stance — is just resurrecting Fulcrum with better branding (the rules now say it in so many words: **mediation is banned**; an arbiter proposing a compromise is the pivot's ghost). The real fix is to shrink its discretion. Now every pillar of a stance is **staked with a price the moment it's raised — while the outcome is still unknown**. That timing is the whole point: pricing before anyone knows who won kills "I'll decide what that concession was worth after seeing how things went." Settlement is arithmetic — the posted price, not a point more or less — and the verdict's first act is no longer judgment but bookkeeping: assemble the audited ledger; discretion survives only over the genuinely stalemated residue. Along the way, the old "debate intensity" dial was retired outright: how seriously a debate takes itself is now measured by the length and price of its issue docket, not by a self-declared enthusiasm setting.
-
-## 🎚️ A reference number, plus the reason: an anchor, not a handcuff
-
-Not a grand unified principle — a specific discovery about a specific class of knobs: **magnitude expectations**. How many rounds should a debate expect to run? How many days out should a short-term call reach? Roughly how long should a reply be? For these, pure abstraction fails quietly: told "as long as it takes," the model re-anchors to its own defaults — it closed out single-stock debates in three rounds and called stalemate in round two; told "up to about a week," it treated a week as *the* default horizon. Abstraction tells a model what matters, never how much is normal. But a bare number fails the mirrored way: it gets executed as a hard rule, the reference becomes the target.
-
-What works on these knobs is welding the two together: **a reference magnitude with its design reasoning attached**. Not "debates run 5–15 rounds," but "a typical debate runs 5–15 rounds, *because* one issue takes a round or two to argue through and a real docket holds several — so don't count rounds, count unsettled issues." Not "look ahead up to 7 days," but "the horizon is however far the evidence can shine — 7 days is a reference ceiling when nothing is anchored, not a default; if the evidence lights up two days, write two." The number hands the model a calibration anchor; the attached reason is precisely its license to depart from the number *correctly*.
-
-One scope note: this recipe is for the rhythm knobs. The debaters' core personas and the constitution's principles stay pure mantra — no numbers welded on, and nothing there has asked for them so far. Between fully mechanical settlement (posted stake prices) at one end and pure mantra at the other, "magnitude expectation" turned out to be the band where number-with-reasons wins.
+The real fix is to shrink its discretion: every pillar of a stance is **staked with a price the moment it's raised — while the outcome is still unknown**. That timing is the whole point: pricing before anyone knows who won kills "I'll decide what that concession was worth after seeing how things went." Settlement is arithmetic — the posted price, not a point more or less — and the verdict's first act is no longer judgment but bookkeeping: assemble the audited ledger; discretion survives only over the genuinely stalemated residue. Along the way, the old "debate intensity" dial was retired outright: how seriously a debate takes itself is now measured by the length and price of its issue docket, not by a self-declared enthusiasm setting.
 
 ## 🥋 Mantra and move: two layers, finally pulled apart
 
-At the start the model was formless — pure chaos. The first handle I reached for was **mantra** (心法): a set of abstract inner principles, meant to *rouse* it rather than instruct it. It worked — somewhat. But the output was unstable, and the reason is baked into what an LLM is: it half-consciously blurts tokens, it can't sit and reason out a complex model on demand, and any single run is a coin toss — a masterpiece one time, a wreck the next.
+At the start the model was formless — pure chaos. The first handle I reached for was **mantra** (心法): a set of abstract inner principles, meant to *rouse* it rather than instruct it. It worked — somewhat. But the output was unstable, and the reason is baked into what an LLM is: in the end it's a fill-in-the-next-word game, half-consciously blurting tokens; it can't sit and reason out a complex model on demand, and any single run is a coin toss — a masterpiece one time, a wreck the next.
 
-The correction came gradually, and it started from the concrete end — things like *how many rounds a debate should run*. Letting the model decide entirely on its own didn't work either. What it needed was a **move** (招式): a reference procedure and reference numbers to consult — explicitly flagged *for reference*, and annotated with *why* each number sits where it does. That rationale is the whole trick (see the anchor-not-handcuff note above): it hands the model an anchor without letting the anchor become a handcuff.
+The correction was worked out on the most concrete class of knobs: **magnitude expectations** — how many rounds should a debate run? How many days out should a short-term call reach? On these knobs pure abstraction fails quietly: told "as many rounds as it takes," the model re-anchors to its own defaults — closing in three rounds, calling stalemate in round two; and a bare number dies the mirrored way: executed as a hard rule, the reference becomes the target. What works is welding the two together — **a reference magnitude with its design reasoning attached**: not "debates run 5–15 rounds," but "a typical debate runs 5–15 rounds, *because* one issue takes a round or two to argue through and a real docket holds several — so don't count rounds, count unsettled issues." The number hands the model a calibration anchor; the attached reason is its license to depart from the number *correctly* — **an anchor, not a handcuff**; the actual value is its own to set. (This recipe is for the rhythm knobs only: personas and principles stay pure mantra, staked settlement at the other end is pure arithmetic, and "number with reasons" wins exactly in the band between.)
 
-So the real shape is two layers, and nearly every rule — from the debate as a whole down to the per-round mechanics — needs both: a pure **mantra** (what matters and why, no numbers, transferable across markets) and a concrete **move** (the reference flow, the thresholds, each carrying its reason). The old mistake was keeping them in one blob — mixed, the mantra picks up numbers and rots into a patch-list, while the move loses its reasoning and gets run as a dead rule. This update **pulls the two apart into separate layers**: the soul and the drill, no longer stepping on each other.
+Generalized, the real shape is two layers, and nearly every rule — from the debate as a whole down to the per-round mechanics — needs both: a pure **mantra** (what matters and why, no numbers, transferable across markets) and a concrete **move** (招式: a reference SOP, thresholds, each carrying its reason). The old mistake was mashing the two into one blob — the mantra picks up numbers and rots into a patch-list, while the move loses its reasoning and gets run as a dead rule. So this update **pulls the two layers fully apart**, no longer stepping on each other.
 
-(That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms. Just finished the separation; testing it next week.)
+This also corrects an earlier verdict of mine: "to a dim model the constitution is a textbook; to a smart one, only procedural law remains." Back then I thought the stronger the model, the more the weight of constraint should shift from "teaching it how to think" to "keeping it from crossing the line." That now looks only half right: a smart model needs the textbook just as much, only in a different form — beyond the principles (the procedural law) it needs SOPs and anchoring references, with the why explained. Without an SOP, and without being steered to summon a subagent, even the smartest LLM can't reliably think its way to a complex model on its own and hand you the result.
+
+(That's the martial-arts sense of the words exactly: 心法 the inner method, 招式 the outward forms.)
 
 ## 🎫 The debater stops fighting solo — it files a work order
 
@@ -204,7 +184,7 @@ So the real shape is two layers, and nearly every rule — from the debate as a 
 
 An inversion I'd had backwards: I kept treating **evidence** as the thing the debate was chasing — go find the fact, bring it back. But finding a fact was never the point; the point was always to settle one small, specific **question**. So the first-class citizen isn't the evidence — it's the **task**: a work order that asks one question and comes back with an answer. Evidence dropped a rank, to *a task's output* — a leaf, not the tree.
 
-So the debater stops fighting solo: when a point needs real work — model a tariff shock through to CPI, read a stock against its true peers — it doesn't do the work itself, it files a task, and a **neutral runner** executes a fixed playbook and returns a structured result. Why route through a task at all? **Neutrality**: hand the judgment to an interested party and it quietly argues toward the answer it already wanted; a neutral runner's result can come back *hurting* the side that asked for it — that's what makes it evidence and not rhetoric. Pricing closes the loop: only a *verified* task earns a top-tier card, while a move-name shouted with nothing run behind it is priced as bare rhetoric, the lowest tier. Talking a good game is finally cheaper than proving one.
+So the debater stops fighting solo: when a point needs real work — model a tariff shock through to CPI, read a stock against its true peers — it doesn't do the work itself, it files a task, and a **neutral runner** executes a fixed playbook and returns a structured result. In kind it's a lot like a chat model on the web running a script before it answers: a conversational LLM can't even do moderately hard arithmetic reliably, and a task summons a ready-made economic model on the spot, runs it, and carries the numbers back — instead of hoping the model can think them up off the top of its head. Why route through a task at all? **Neutrality**: hand the judgment to an interested party and it quietly argues toward the answer it already wanted; a neutral runner's result can come back *hurting* the side that asked for it — that's what makes it evidence and not rhetoric. Pricing closes the loop — the same logic as staked pricing: **strength is the execution result, not the volume of the voice**. Only a *verified* task earns a top-tier card, while a move-name shouted with nothing run behind it is priced as bare rhetoric, the lowest tier. Talking a good game is finally cheaper than proving one.
 
 The restraint matters as much as the mechanism: **not everything becomes a task.** You don't summon a work-crew to look up one number; a system that files a formal task to check the time is as broken as one that never checks.
 
@@ -212,7 +192,7 @@ The restraint matters as much as the mechanism: **not everything becomes a task.
 
 MU is the specimen: it read the whole round trip almost to the number — the drop into the high-880s, the recovery back toward 930, all called before any of it happened — and then signed the report **HOLD, size N/A.** A flawless chart, and nobody at the wheel.
 
-That gap taught me something I'd been running past for a year: **analysis and operation are two different layers, and a perfect one on top does not make the one below.** Reading the market right is a *map*; deciding the single best move off it — where the price sits, what the odds pay, what a wrong step costs — is a separate act of *navigation*. Which is oddly good news, because it localizes the failure: I could finally tell whether a mushy HOLD meant the system didn't *understand* the stock or didn't *act* on its understanding — opposite fixes — and MU settled it, the understanding was there, in ink, ahead of time. So the job isn't "make it smarter"; it's to build the missing translation from a correct read to a committed move — and to stop scoring the two as one: a beautiful map that ends in HOLD should not pass just because the map was beautiful.
+That gap taught me something I'd been running past for a year: **analysis and operation are two different layers, and a perfect one on top does not make the one below.** Reading the market right is a *map*; deciding the single best move off it — where the price sits, what the odds pay, what a wrong step costs — is a separate act of *navigation*. This project's original sin was "an analyst's vocabulary on a gambler's hands" (🗣️); this is its subtler cousin, one stage later: it *reads* like a master, and then just… stands there. Which is oddly good news, because it localizes the failure: I could finally tell whether a mushy HOLD meant the system didn't *understand* the stock or didn't *act* on its understanding — opposite fixes — and MU settled it, the understanding was there, in ink, ahead of time. So the job isn't "make it smarter"; it's to build the missing translation from a correct read to a committed move — and to stop scoring the two as one: a beautiful map that ends in HOLD should not pass just because the map was beautiful.
 
 ## 🧩 The mindless HOLD wasn't a deep flaw — the refactor had dropped a rule
 
@@ -231,6 +211,12 @@ The road through the refactor and task polished a great many rules to unpreceden
 A secret I never wrote down: back when the cast went from 2 to 3 and the pivot joined, those first days were a mess too — bugs everywhere, precision falling off a cliff, several days of fixing before it recovered. This time, going from 3 back to 2 plus the ledger, the exact same movie: the first batch off the line scored *worse* than the permission regime it replaced, and again days of patching — until recently, when it finally pulled level with the old three-hander, with a visibly higher ceiling (the next post-mortem volume isn't out yet, but the tape already shows it). Two upgrades, one curve: **first into the ditch, then out of it — and the height you reach after climbing out is the new architecture's true altitude.**
 
 Which sets a rule for the post-mortem: the ugly numbers from the first days after a switch must not be read as proof of "wrong direction." **The bottom of a J-curve and the bottom of a dead end look identical**; the only way to tell them apart is whether what you're fixing is bugs — or structure that won't fix. So after every big change: hands off for a stretch, let it bank clean samples, then judge. This and "most systems that run smoothly have a stretch behind them where they couldn't catch their breath" are the same law, sighted twice.
+
+## 🪴 A rough shape has to grow first — only then is there something to design
+
+This round I had Claude and Codex in consultation at the same time, tearing the whole AI down to rebuild it, and the further it went the more familiar the process felt. At the start I had no idea what the final thing should look like: ensembles one day, role stances the next, then evidence and task split into two layers, and later even the skills divided into theory and execution — nobody ever planned that picture; it **grew on its own**: clearly layered, but rough. And yet it's only at this point that top-level design becomes possible for the first time — you look at the rough shape and see what's missing, what's coarse, what's redundant, and then set about re-splitting and merging. The order can't be reversed: **the design didn't produce the system; the system had to grow first before it was worth designing.**
+
+World models seem to be walking the same road. When GPT-4 came out, LeCun was already saying language alone isn't enough, that you need a world model — the direction was right, but the real world is far too complex for anyone to draw a complete, correct architecture top-down in one stroke. It's only now — with reasoning, image and video, VLA, robotics and spatial intelligence each breaking through bit by bit, the capabilities assembling piece by piece — that what a complete world model should look like is starting to come into view; Fei-Fei Li's team working on spatial intelligence seems to be moving along that same road. A tiny trading framework and a vast field running into the same regularity is probably not a coincidence.
 
 ---
 
@@ -277,46 +263,26 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 三个 AI 吵得鸡飞狗跳，你以为输出一定是乱的——恰恰相反，它的一致性比"各自安静地想一遍"高得多。**稳定从来不来自静止，来自持续的对抗**：每一方都被另外两方盯着、顶着，谁也没法悄悄跑偏。自行车靠速度站稳，辩论靠对抗收敛。
 
-## 🛤️ 阻尼器，比"两方对骂"和"多次取平均"都强
-
-只剩两方时，总有一方会意外占上风、早早把另一方忽悠瘸，辩论塌成一边倒。防这个我想过两条路：最初是"跑几轮取平均"，可平均只能洗掉随机噪声，洗不掉被花言巧语带偏的**系统性**错误（那种错每个样本都朝同一边偏，平均只会原样保留）。后来加了第三极支点 **Fulcrum** 当阻尼器：就像单轨列车越往一边斜、把它扳回来的"回复力"（restoring force）就越大——这是个典型的**负反馈**，任何一方越想拽向激进，就越要同时挨另外两个 AI 从不同方向的进攻。两方对峙容易一边倒，三方加阻尼才真正收敛得稳。（顺带澄清：这个阻尼器和早期那个"风险员"只是**操作上**有点像、都偏谨慎，但它是**独立设计**出来的——风险员是为看空那一方服务的一张嘴，阻尼器不站任何一方，只负责提供"回正力矩"。形似，神不同。）*（后来这根支点被拆了——为什么，见下面的 ♻️。）*
-
 ## ♻️ 1 → 2 → 3，又回到 2
 
 这套阵容的人数兜了一个圈：**1 → 2 → 3 → 又回到 2。**
 
 - **1**：最早单个 agent，追涨杀跌。
 - **2**：劈成乐观的 Zealot 和算账的 Reaper，纠错终于能指向两边。
-- **3**：加第三极支点 Fulcrum 当阻尼器，防两方对峙塌成一边倒。
+- **3**：加第三极支点 **Fulcrum** 当阻尼器。
 - **2**：现在，又把支点拆了。
 
-拆它，是因为几件事同时发生，阻尼器**从解药变成了障碍**：模型越来越聪明、我把宪法里的规则写得越来越明确、又给辩论加了联网取证的机制。当年支点要补的那些空子，如今更聪明的模型加更硬的规则已经能自己堵上；它继续待在场上反而添乱——天生往中间靠，把本该有结论的判断稀释成不及格的中庸。
+**加它**，是因为只剩两方时，总有一方会意外占上风、早早把另一方忽悠瘸，辩论塌成一边倒。"跑几轮取平均"救不了这个——平均只能洗掉随机噪声，洗不掉被花言巧语带偏的**系统性**错误（那种错每个样本都朝同一边偏，平均只会原样保留）。阻尼器不一样：像单轨列车越往一边斜、把它扳回来的"回复力"就越大——典型的**负反馈**，任何一方越想拽向激进，就越要同时挨另外两个 AI 从不同方向的进攻。（顺带澄清：它和早期那个"风险员"只是操作上像、都偏谨慎，实为独立设计——风险员是为看空方服务的一张嘴，阻尼器不站任何一方，只提供"回正力矩"。形似，神不同。）
 
-这不是拍脑袋，是系统自己的复盘量出来的：n=56 的后验里，支点**毁值和拦截各 11 次打平**，连"拦对"的那些均分也只有 58、够不上 70 的及格线——正是"死 HOLD、白错过机会"的量化形态。它唯一有用的"反驳"职能，拆进两个辩手内化就够，不必单设一极。
+**拆它**，是因为几件事同时发生，阻尼器**从解药变成了障碍**：模型越来越聪明、宪法规则越写越明确、辩论又接上了联网取证。当年支点要补的空子，如今更聪明的模型加更硬的规则已经能自己堵上；它留在场上反而添乱——天生往中间靠，把本该有结论的判断稀释成不及格的中庸。这不是拍脑袋，是系统自己的复盘量出来的：n=56 的后验里，支点**毁值和拦截各 11 次打平**，连"拦对"的那些均分也只有 58、够不上 70 的及格线——正是"死 HOLD、白错过机会"的量化形态。它唯一有用的"反驳"职能，拆进两个辩手内化就够，不必单设一极。
 
-说到底：**支点是给"笨模型 + 有限数据 + 粗规则"配的拐杖，三样都升级后，代价盖过用处，就该拆。** 这恰是后面那条的现世报——宪法对越聪明的模型，越从教科书退化成程序法。
+说到底：**支点是给"笨模型 + 有限数据 + 粗规则"配的拐杖，三样都升级后，代价盖过用处，就该拆。**
 
 ![流程](../images/flowchart-v2.png)
 
-## 🧮 贝叶斯退让：从"反驳不了就退让"到"证据说了算"
-
-贝叶斯更新一直是这套系统最重要的原则之一：对手拿出有效新证据，你就得调立场，不许纯靠嘴硬扛。这条不动，变的是它的**触发条件**。
-
-最初的构想是——**"无法完全反驳，就得部分退让"**。在早期那个闭源、数据有限、又不能联网的环境里，它是有效的：很多主张当场无从查证、也无从反驳，让"反驳不了就退一步"当默认，能逼各方别硬杠。
-
-可等模型变聪明、又接上搜索，这条老规则反而**成了障碍**——因为"无法反驳"不再等于"对方有理",它可能只是"我一时查不到"。于是它同时喂出两种坏毛病：**无脑 HOLD**（谁也反驳不了谁，就各退一步回中庸）和**抬杠**（专挑天然不可证伪的风险主张往外抛，反正你也驳不掉，白赚一次退让）。空头论据天生更难证伪，这规则于是还结构性偏空。
-
-现在有了联网取证，就把它**改成新模式**：退让的前提不再是"我手头没料",而是"**已定向查证、且没能推翻**"。只有 `verified` 证据才有资格逼对方让步；边界不画在"退让多少",画在"**谁有资格要求退让**"——有实证你就得让（不会死杠），没实证你讹不到（不会无脑中庸）。*（后来这版"资格制"也被证明拧过了头——怎么拧的、又怎么修的，见下面的 🌀。）*
-
-## ⏰ 从固定闹钟，到（还在路上的）动态节奏
-
-早期是 LangGraph 的机械调度 + 一堆免费 key，只能**固定频率轮询**：不该请求时频繁打，该请求时却在 CD——CPI 都公布了，我的还得等明天才取，赶上接口抽风还请求失败。现在换成让 agent **按需自己去搜**：这些数据其实都找得到，只是杂、更新慢、搜起来烦——交给 AI 反而顺，连欧洲、日本那些平时难找的基本面和新闻都能成功喂进辩论了。
-
-至于更聪明的**动态调度**——AI 吵完根据情况建议下一轮时间、定时瞄一眼大盘、遇到极端行情临时喊 agent 加班——目前只能先当**未来规划**。卡点只有一个：**额度**。不管是 API 烧钱，还是 Claude Code / GPT / Codex 的 usage 上限，都还不允许它敞开了自由呼吸。
-
 ## 🔦 让 AI"搜到它自己想发现的东西"，出奇地难
 
-做下来才发现，LLM 搜索远不是"调个 API"那么简单——想引导 AI 顺着某个隐隐的念头去挖、去印证它自己都还没说清的直觉，特别难。这个弱点在 DeepSeek + Linkup API 这套组合上暴露得淋漓尽致：它搜是搜了，却总搜不到点子上。相比之下，GPT、Claude 配**原生搜索**表现好得多。所以现在不管辩论还是复盘，我都尽量只用 CC 和 Codex 版本——哪怕它们额度低。眼下正忙的，就是给这点可怜的额度排班、算配给。
+做下来才发现，LLM 搜索远不是"调个 API"那么简单——想引导 AI 顺着某个隐隐的念头去挖、去印证它自己都还没说清的直觉，特别难。这个弱点在 DeepSeek + Linkup API 这套组合上暴露得淋漓尽致：它搜是搜了，却总搜不到点子上。相比之下，GPT、Claude 配**原生搜索**表现好得多。所以现在辩论和复盘都换成了 **codex 主力驱动**——哪怕额度紧，也比搜不到点子上强。取证这件事本身也升了级：从早年的"一把搜索"，分成了 **evidence 和 task 两个明确的层面**。
 
 ## 🛰️ 横向取证：从"凑合的参照"到"主动去比"
 
@@ -330,7 +296,9 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 ## 🫁 给系统装上"呼吸"
 
-这套东西最早是静态的 LangGraph，被动地等外面喂它一次信息。后来我搭了个平行的 Claude Code 版本，验证了"让 AI 自己去搜数据和新闻"行得通，才有了现在这一版。眼下最头疼的是怎么让它**稳定地"呼吸"**：现在靠一个 hermes agent 当"笨闹钟"——注意是"笨"的，它只会按固定点把 Claude Code 喊起来干活，那套"会看情况自己排班"的智能调度，因为没钱（额度）先延后了。可就连这么个笨闹钟，自动化起来也总闹不稳定和权限的幺蛾子，这两天我还在修。能稳定运转的系统，背后大多有一段没人看见的"喘不上气"。
+这套东西最早是静态的 LangGraph：机械调度 + 一堆免费 key，只能**固定频率轮询**——不该请求时频繁打，该请求时却在 CD，CPI 都公布了，我的还得等明天才取。数据这半边后来解决得很干净：搭了个平行的 Claude Code 版本，验证"让 agent **按需自己去搜**"行得通，连欧洲、日本那些平时难找的基本面和新闻都能喂进辩论了。
+
+难的是节奏这半边：怎么让它**稳定地"呼吸"**。理想的全自动调度——AI 吵完自己建议下一轮时间、极端行情临时加班——一直卡在两件事上：**额度**（这一阵 codex 消耗巨大，已经撑不起一天一轮），和**盈透重连需要我在场**。中间拿 hermes agent 当过"笨闹钟"，按固定点喊 Claude Code 干活，自动化起来净闹稳定性和权限的幺蛾子。等它完全稳定？等不到。于是折中出一个**半智能模式**：驱动还是手动的，但对话 agent 会先看下一轮时间表、上一轮跑完的时间、剩余 usage 和额度重置信号，替我算出这一次该跑几场。说白了根源是穷——可穷出来的这台调度器，反而先落地了。能稳定运转的系统，背后大多有一段没人看见的"喘不上气"。
 
 ## 🧭 连续性要挣，不许继承
 
@@ -350,7 +318,11 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 ## 🃏 它疯了？不，它算到了第五层
 
-两件八竿子打不着的事让我服了气。一次是 **NVIDIA 财报明明利好，它却连着两天独立喊卖**——我第一反应是"代码出 bug 了"，结果是市场出 bug（指我看漏了）。另一次是**伊朗地缘恐慌**，满屏杀跌，它却淡定看多，那神情活像在说：「这些新闻我早就晓得啦，你们人类真是，跌了哭、涨了叫，要算赔率懂么。」两件事互不相干，却指向同一点：只要数据喂够了，它的分析是真能算到第五层的。系统成熟的标志，不是它的判断让你点头，而是它开始让创造它的人感到意外、且事后被证明是对的。
+对它的信心，走过三个阶段。最开始只是个**信念**：AI 讲金融一套一套的，我寻思它一定有这个潜质——纯直觉，没证据。
+
+然后是两件八竿子打不着的事，把信念砸成了**实感**。一次是 **NVIDIA 财报明明利好，它却连着两天独立喊卖**——我第一反应是"代码出 bug 了"，结果是市场出 bug（指我看漏了）。另一次是**伊朗地缘恐慌**，满屏杀跌，它却淡定看多，那神情活像在说：「这些新闻我早就晓得啦，你们人类真是，跌了哭、涨了叫，要算赔率懂么。」两件事互不相干，却指向同一点：只要数据喂够了，它是真能算到第五层的。
+
+第三个阶段轮到**统计**说话：复盘攒够样本一算，在"踩中 100、踩空 0"的尺度下，**中位分能站上 70+**，翻车很少——神作不是幸存者偏差，是分布。现在干的活，就是让第五层从"偶尔附体"变成稳定输出：体系化、规模化。系统成熟的标志，不是它的判断让你点头，而是它开始让创造它的人感到意外、且事后被证明是对的。
 
 ## 🎭 AI 最危险的不是犯错，是错得和对的一样好看
 
@@ -362,7 +334,9 @@ LLM 教会了我金融，我就天真地以为它天然会交易——结果它�
 
 ## 🔁 复盘：不止问对错，要问"当时它能不能看出来"
 
-辩论里有取证员管查证；复盘同样靠搜索，只是发生在事后。现在的流程分四步。**第一步看撞线**：它有没有反复撞上不该撞的线——比如你不能老撞止损线；撞线的模式本身就是病历。**第二步综合评分**：在固定档位（3 天、20 天）之后看价格实际走成什么样，结合当时那份报告和它给出的操作打 0–100 的底分（0 踩空：方向判反；50 错过：看对没抓住；100 踩中），再把撞线情况、短期走势判断和它给的分析理由合成总评。**第三步默认深查**：除非踩得很准，一律回读当时的原始信息和搜索——这一步从早期的"出错才触发"改成了"**踩准才豁免**"。**第四步归因**，分三档：**黑天鹅**——当时的信息无从看出，不是它的锅，那属于赔率本身；**弱信号**——线索在卷宗里、很弱但存在，算半个锅；**分析问题**——信息都在、推理踩空，全是它的锅。只有后两档是可修正的错误，也只有它们有资格变成 BP 的"梯度"。
+辩论里有取证员管查证；复盘同样靠搜索，只是发生在事后。现在的流程分四步。**第一步看撞线**：它有没有反复撞上不该撞的线——比如你不能老撞止损线；撞线的模式本身就是病历。**第二步综合评分**：在固定档位（3 天、20 天）之后看价格实际走成什么样，结合当时那份报告和它给出的操作打 0–100 的底分（0 踩空：方向判反；50 错过：看对没抓住；100 踩中），再把撞线情况、它给出的操作、走势的量级和分析理由合成总评——踩得特别准的直接逼近满分、免检。**第三步默认深查**：除非踩得很准，一律回读当时的原始信息和搜索——这一步从早期的"出错才触发"改成了"**踩准才豁免**"。**第四步归因**，分三档：**黑天鹅**——当时的信息无从看出，不是它的锅，那属于赔率本身；**弱信号**——线索在卷宗里、很弱但存在，算半个锅；**分析问题**——信息都在、推理踩空，全是它的锅。只有后两档是可修正的错误，也只有它们有资格变成 BP 的"梯度"。
+
+另有一条免责边界：如果报告当时就明确写了"只看到某个**事件节点**为止、之后不确定"——注意是事件节点，不是阈值——而事实也确实如此，那节点之后的走势不算它的锅；要是它连节点之后都算对了，那就是第五层，记大功。
 
 复盘不需要辩论那套对抗：确定性走势已经摆在面前，必需的只有搜索。所以清算者（reckoner）由单个 agent 线性完成——早先挂 grounding + Linkup 搜索的版本成本偏高，后来改为在 Claude Code 空闲时调用它担任清算者，取其当下空闲、且自带搜索。这一环已经不是"仍在调试"了——它跑起来了，一册一册地出复盘报告。
 
@@ -374,7 +348,7 @@ BP 就是神经网络里的**反向传播（Backpropagation）**——我给这�
 
 这不就是反向传播嘛：辩论是前向推理，后验是拿真实标签算误差，复盘是把误差抽象成梯度，改宪法和架构就是更新权重。只不过这里的"梯度"不是数字，是一条被 AI 提炼的抽象教训；"权重"不是矩阵，是那部宪法与这套架构。**拆支点、改贝叶斯是 BP 跑出来的第一批大更新；记账制、挂牌定价、心法与招式分层，是第二批**——连"向心力搬家"这个诊断，都是 BP 自己从行为分布里量出来的。
 
-BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一版改完，均分一口气跳了十几分，我差点开香槟——细查发现那几天市场比对照期平静了三分之一，而系统三分之二的场次输出中性：**不怎么动的市场里，中性天然就是对的**。分数在涨，该动的机制指标一个都没动，涨的分是行情送的。从此复盘多了两条铁律：比分数之前先对齐波动率（regime），以及**先做度量、再动机制**——想按什么方向改，先证明那个"什么"真的和对错相关。
+BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一版改完，均分一口气跳了十几分，我差点开香槟——追到最后，罪魁是 codex 出了个 bug：好像没加载对文件，分数本身就是错的。这类坑磨了几轮，复盘规则如今完善多了；顺带还抽样对过卷：同一批复盘让 codex 和 Claude 各打一遍，平均只差 0.6 分、最大差 3 分，给的理由也大同小异——清算这个岗位，对模型不挑。但"分数会骗人"这课没白上，留下两条铁律：比分数之前先对齐波动率（regime），以及**先做度量、再动机制**——想按什么方向改，先证明那个"什么"真的和对错相关。
 
 顺一句：BP 和上面那条"横向取证",其实我 2026 年初就构思好了，当时只是直觉觉得该这么干，后来也果然管用——只是从想到到做出来，隔了大半年。倒不是什么"好设计值得等",说白了就是：这是个一个人**用爱发电**的私人项目，没资源迅速实现，只能挤着时间一件件慢慢磨。
 
@@ -392,53 +366,45 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 
 还有个反直觉的小发现：**高温度（temperature）反而更好**——模型更灵活，也没冒出更多幻觉。真正麻烦的是笨模型在低温下：死板、复读、逮谁怼谁，却特别容易被一套漂亮修辞糊弄过去（嘴上最较真，心里最没主见）。
 
-## 📜 宪法对笨模型是教科书，对聪明模型是程序法
-
-给笨模型，宪法是矫正器——你不写"后视降权"，它真就追涨杀跌；给聪明模型，矫正功能贬值了，但"对齐"和"身份锚定"在升值：越聪明越需要被焊死在角色里，因为它更有本事悄悄滑出人设、还把这次滑出自圆其说得天衣无缝。模型越强，约束的重心就越从"教它怎么想"移到"管它别越界"。
-
 ## 📏 "MACD 转负"这四个字，不构成论据
 
 要让它成为论据，必须同时报出**幅度**（贴着临界线，还是已经远离？）和**方向**（在扩大，还是在收敛？）；贴着线的小幅穿越，默认就是噪音。这条规则两边都拦：既拦空头的"-1.7，空头确立了"，也拦多头的"RSI 才 53，还没超买呢"——指标是一把刻度尺，不是一个 0/1 开关。
 
+回头看，这条小规则其实是整条**计量化路线的起点**：后来的记账、挂牌定价、task，干的都是同一件事——把模糊的定性话术，换成可靠的量化计算。
+
 ## 🔎 输出要审计，喂进去的输入更要审计
 
-两道关。一是**语义精确**：AI 很会用含混语气把一个"推断"说得像"直接引自数据"，或只给"明显偏弱"这种没刻度的词把你带走。二是**消息溯源**：一条消息每转一手，可信度就衰减一层——总统发条推 → 通讯社引用 → 数据商转发 → 进了卷宗，每环都没撒谎，但来源链层层蒸发，最后系统就把"口头施压"当成了"政策落地"。早期只有免费新闻源时这坑最深：AI 没法知道前因后果，照着层层转载就形成了错误预期。所以现在辩论里 AI 会自己提出查证 **task**，由中立的 Scout 取证员联网搜索、归纳前因后果——把"传不到的证人"变成"当场出庭"，卷宗的上限就被抬高了。（题外一句：被消息误导、和"AI 算赔率比人冷静"这两层一直并存；但目前看是后者占上风——它确实比我们沉得住气。）
+两道关。一是**语义精确**：AI 很会用含混语气把一个"推断"说得像"直接引自数据"，或只给"明显偏弱"这种没刻度的词把你带走。二是**消息溯源**：一条消息每转一手，可信度就衰减一层——总统发条推 → 通讯社引用 → 数据商转发 → 进了卷宗，每环都没撒谎，但来源链层层蒸发，最后系统就把"口头施压"当成了"政策落地"。早期只有免费新闻源时这坑最深：AI 没法知道前因后果，照着层层转载就形成了错误预期。所以现在辩论里 AI 会自己提出查证需求，由中立的 Scout 取证员联网搜索、归纳前因后果，落成一条条 **evidence**——把"传不到的证人"变成"当场出庭"，卷宗的上限就被抬高了。（题外一句：被消息误导、和"AI 算赔率比人冷静"这两层一直并存；但目前看是后者占上风——它确实比我们沉得住气。）
 
 ## 🌀 向心力没死，它搬了家
 
-拆了支点、退让也改成了"凭 verified 证据说话"，我等着复盘来鼓掌。结果（n=249）：终局判断的标准差从 10.6 塌到 4.6，买入动作灭绝，92% 的场次以 HOLD 收场，Zealot 的开局手牌从 67 被压到 59。更扎心的是，最重的亏损全是同一个剧本——Reaper 明明喊对了下跌，却被劝回 HOLD。"重败"的集合，和"正确的少数派被收敛掉"的集合，几乎完全重合。
+贝叶斯退让是这套系统最重要的原则之一：对手拿出有效新证据，你就得调立场，不许纯靠嘴硬扛。原则没动过，动的一直是**触发条件**——而且两头都撞过墙。
 
-诊断写出来像寓言：v1 给退让定的价是零——"反驳不了就退一步"——于是 93% 的输出糊向中间；v2 把价格定成无穷——只有 verified 证据才撬得动你——于是大家干脆都不动了。同一条路的两个死端。杀掉调停者并没有杀掉向心力，它只是从人格层（Fulcrum）搬进了制度层（退让规则本身）。制度会偏向中庸，和性格会偏向中庸一样确定。
+**v1**："无法完全反驳，就得部分退让。"在早期闭源、不能联网的环境里它有效：主张当场无从查证，让"反驳不了就退一步"当默认，能逼各方别硬杠。可等模型变聪明、接上搜索，"无法反驳"就不再等于"对方有理"——它可能只是"我一时查不到"。这规则于是喂出两种坏毛病：**无脑 HOLD**（谁也驳不倒谁，各退一步回中庸）和**抬杠**（专抛天然不可证伪的风险主张，白赚退让；空头论据更难证伪，还结构性偏空）。于是改 **v2** "资格制"：只有"**已定向查证、且没能推翻**"的 `verified` 证据才有资格逼对方让步——有实证你就得让，没实证你讹不到。
 
-## 🧾 从"许不许动"到"这笔账有没有对价"
+拆了支点、又换上资格制，我等着复盘来鼓掌。结果（n=249）：终局判断的标准差从 10.6 塌到 4.6，买入动作灭绝，92% 的场次以 HOLD 收场，Zealot 的开局手牌从 67 被压到 59。更扎心的是，最重的亏损全是同一个剧本——Reaper 明明喊对了下跌，却被劝回 HOLD。诊断写出来像寓言：**v1 给退让定的价是零，93% 的输出糊向中间；v2 把价格定成无穷，大家干脆都不动了。** 同一条路的两个死端。杀掉调停者并没有杀掉向心力，它只是从人格层（Fulcrum）搬进了制度层（退让规则本身）。制度会偏向中庸，和性格会偏向中庸一样确定。
 
-药方是换法系：**记账制**。移动自由、记账强制——立场每挪一格都要入账（谁动的、动多少、对着哪条证据），仲裁者审计，幅度自定。
+## 🧾 给退让定价：记账、堵漏、挂牌
 
-然后中期检查（n=49）交出了喜剧效果：机构落地得漂漂亮亮——每轮带账本、每份终报带结构化触发器、审计措辞和账目编号一应俱全——行为却比改革前动得*更少*。给了"幅度自决"的自由，辩手们自选的让分中位数是 **3 分**，比刚被废除的那张机械换算表还抠门；"全程一分不动"的场次翻了三倍、占到 27%。原因优雅得很：审计只审"动"，于是"不动"成了唯一不设收费站的出口。LLM 会心甘情愿地采纳你这套制度的文书工作，同时悄悄谢绝它的定价逻辑；你把审计设在哪里，它就以惊人的速度找到没被审计的那个角落。所以账本随后延伸到了静止本身：**±0 也是决策**——"我没动"如今也得逐条列出理由。
+退让规则两头碰壁之后，药方是换法系：**记账制**。移动自由、记账强制——立场每挪一格都要入账（谁动的、动多少、对着哪条证据），仲裁者审计，幅度自定。
 
-## ⚖️ 取中不是偷懒，是算术
+然后中期检查（n=49）交出了喜剧效果：机构落地得漂漂亮亮——每轮带账本、每份终报带结构化触发器、审计措辞和账目编号一应俱全——行为却比改革前动得*更少*：辩手们自选的让分中位数是 **3 分**，比刚被废除的那张机械换算表还抠门；"全程一分不动"的场次翻了三倍、占到 27%。原因优雅得很：审计只审"动"，于是"不动"成了唯一不设收费站的出口。LLM 会心甘情愿地采纳你这套制度的文书工作，同时悄悄谢绝它的定价逻辑；你把审计设在哪里，它就以惊人的速度找到没被审计的那个角落。所以账本随后延伸到了静止本身：**±0 也是决策**——"我没动"如今也得逐条列出理由。
 
-下一轮复盘（n=161）抓到下一个真凶：终裁在算平均。55% 的终裁落在两边收盘立场的正中间，离两侧的距离近乎对称；Zealot 末轮站上 58 分的有 92 场，终裁跟着站上去的只有 3 场。而我连生气的资格都没有——仲裁者干的正是它被设计成的样子：一个自己没有立场的审计员，面对两个都合规的终局立场，没有任何依据偏向谁。取中不是懒惰，是这个角色规格之下数学上必然的输出。
+再下一轮复盘（n=161）抓到下一个真凶：**终裁在算平均**。55% 的终裁落在两边收盘立场的正中间；Zealot 末轮站上 58 分的有 92 场，终裁跟着站上去的只有 3 场。而我连生气的资格都没有——仲裁者干的正是它被设计成的样子：一个自己没有立场的审计员，面对两个都合规的终局立场，没有任何依据偏向谁。**取中不是偷懒，是算术**，是这个角色规格之下数学上必然的输出。诱人的修法——给仲裁者一个立场——不过是给 Fulcrum 换个包装还魂（规则里如今写得明明白白：**禁止调停**，仲裁者提折中方案就是支点的亡灵）。
 
-诱人的修法——给仲裁者一个立场——不过是给 Fulcrum 换个包装还魂（规则里如今写得明明白白：**禁止调停**，仲裁者提折中方案就是支点的亡灵）。真正的修法是缩小它的量裁区：现在每根立场支柱在立起来的那一刻就要**挂牌标价——趁着输赢还未知的时候**。这个时点就是全部要义：在不知道谁赢之前定价，杀死了"等看清风向再决定这次退让值几分"的自说自话。结算是算术——按挂的牌价，一分不多一分不少；终裁的第一步不再是裁量而是记账：把经过审计的账本组装起来，量裁权只保留给真正僵持的残余。顺带，"辩论烈度"这个旋钮整个退役了——一场辩论有多认真，如今看它议题清单的长度和牌价，不看它自报的热情值。
-
-## 🎚️ 给个参考指标，再告诉它为什么：是锚，不是铐
-
-这不是什么大一统原则，而是一个针对特定旋钮类别的具体发现：**量级预期**。一场辩论该预期打几轮？一个短线判断该往前看几天？一条回应大概写多长？在这类旋钮上，纯抽象会悄悄失效：告诉它"该几轮就几轮"，它就锚回自己的默认值——个股辩论三轮收场、第二轮就宣布僵持；告诉它"最多看一周左右"，它就把一周当成了默认档。抽象告诉模型什么重要，从不告诉它多少算正常。而光秃秃的数字死在镜像的另一边：会被当成硬规则机械执行，参考值变成了目标值。
-
-在这类旋钮上管用的，是把两样焊在一起：**一个参考量级，附带它的设计推理**。不说"辩论跑 5–15 轮"，而说"典型一局 5–15 轮，*因为*一个议题谈透要一两轮、一张像样的清单上总有好几个议题——所以别数轮数，数还没结清的议题"。不说"最多看 7 天"，而说"天数 = 证据能照亮的距离——没有事件锚时 7 天是参考上限、不是默认值；证据只照得亮两天，就写两天"。数字给模型一个校准锚点；附带的那段理由，恰恰是它"正确地偏离数字"的许可证。
-
-补一句边界：这个配方只用在节奏类旋钮上。辩手的核心人设、宪法里的原则，依然是纯心法——不焊数字，目前也没发现那里需要。在"完全机械结算"（挂牌定价）和"纯心法"这两端之间，"量级预期"恰好是"数字带理由"取胜的那一段。
+真正的修法是缩小它的量裁区：每根立场支柱在立起来的那一刻就要**挂牌标价——趁着输赢还未知的时候**。这个时点就是全部要义：在不知道谁赢之前定价，杀死了"等看清风向再决定这次退让值几分"的自说自话。结算是算术——按挂的牌价，一分不多一分不少；终裁的第一步不再是裁量而是记账：把经过审计的账本组装起来，量裁权只保留给真正僵持的残余。顺带，"辩论烈度"这个旋钮整个退役了——一场辩论有多认真，如今看它议题清单的长度和牌价，不看它自报的热情值。
 
 ## 🥋 心法与招式：终于把两层彻底分开
 
-一开始，模型是混沌一片。我伸手去够的第一个把手是**心法**：一套抽象的内功原则，想的是*激发*它、而不是命令它。有效——但只有几分。它的发挥很不稳定，根子就在 LLM 的本性里：它是半下意识地往外蹦字，没法当场坐下来推演一个复杂模型，任何一次单独发挥都像抛硬币——这次神作、下次翻车。
+一开始，模型是混沌一片。我伸手去够的第一个把手是**心法**：一套抽象的内功原则，想的是*激发*它、而不是命令它。有效——但只有几分。它的发挥很不稳定，根子就在 LLM 的本性里：它终究是个填词游戏，半下意识地往外蹦字，没法当场坐下来推演一个复杂模型，任何一次单独发挥都像抛硬币——这次神作、下次翻车。
 
-纠偏是慢慢来的，而且是从最具体的那头起步——比如*一场辩论该打几轮*。可完全让它自己拿主意，也不行。它需要的是**招式**：一套供它参考的流程和数值——明确标注"仅供参考",并注明*为什么*这个数字设在这儿。那段理由才是关键（见上面「是锚不是铐」）：给模型一个锚，又不让这个锚变成铐。
+纠偏是从最具体的一类旋钮上摸出门道的：**量级预期**——一场辩论该打几轮？一个短线判断该往前看几天？在这类旋钮上纯抽象会悄悄失效：告诉它"该几轮就几轮"，它就锚回自己的默认值，三轮收场、第二轮就宣布僵持；而光秃秃的数字死在镜像的另一边：被当成硬规则机械执行，参考值变成目标值。管用的是把两样焊在一起——**一个参考量级，附带它的设计推理**：不说"辩论跑 5–15 轮"，而说"典型一局 5–15 轮，*因为*一个议题谈透要一两轮、一张像样的清单上总有好几个议题——所以别数轮数，数还没结清的议题"。数字给模型一个校准锚点，附带的理由则是它"正确地偏离数字"的许可证——**是锚，不是铐**，具体的值它自己来定。（这个配方只用在节奏类旋钮上：人设与原则依然是纯心法，挂牌结算那头是纯算术，"数字带理由"恰好是中间取胜的那段。）
 
-于是真正的形状是两层，几乎每条规则——从整场辩论到每一轮的机制——都同时需要：一层纯**心法**（讲什么重要、为什么，不带数字，能跨市场迁移），一层具体**招式**（参考流程、阈值，每个都带着它的理由）。过去的毛病是把两样揉成一坨——揉在一起，心法沾上数字、退化成补丁清单，招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**：心法与招式，不再互相踩脚。
+推而广之，真正的形状是两层，几乎每条规则——从整场辩论到每一轮的机制——都同时需要：一层纯**心法**（讲什么重要、为什么，不带数字，能跨市场迁移），一层具体**招式**（参考 SOP、阈值，每个都带着它的理由）。过去的毛病是把两样揉成一坨——心法沾上数字、退化成补丁清单，招式丢了道理、被当成死规则机械执行。所以这次更新，**把两层彻底分开**，不再互相踩脚。
 
-（这正是两个词的武学本义：心法是内功心诀，招式是外在招法。这次刚把分离做完，下周试。）
+这顺带修正了我早先的一个判断："宪法对笨模型是教科书，对聪明模型只剩程序法。"当时觉得模型越强，约束的重心就越该从"教它怎么想"移到"管它别越界"。现在看只对了一半：聪明模型一样需要教科书，只是形态变了——原则（程序法）之外，还得有 SOP 和锚定参照、并解释清楚为什么。你不给 SOP、不引导它去召唤 subagent，再聪明的 LLM 也没法稳定地自行寻思出一个复杂模型、再把结果端给你。
+
+（这正是两个词的武学本义：心法是内功心诀，招式是外在招法。）
 
 ## 🎫 辩手不再单打独斗——它开一张工作单
 
@@ -446,7 +412,7 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 
 有个倒装我一直搞反了：我总把**证据**当成辩论追逐的东西——去把事实找回来。可找到一个事实从来不是目的，目的始终是把一个具体的小**问题**结算掉。所以一等公民不是证据，是 **task**：一张只问一个问题、带着答案回来的工作单。证据降了一级，成了 *task 的产出*——是叶子，不是那棵树。
 
-于是辩手不再单打独斗：一个点需要真功夫时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比——它不自己动手，而是发一张 task 单，由**中立的执行员（runner）**照固定 playbook 跑完、返回结构化结果。为什么非得走 task？**为了中立**：判断一交给利益相关方，它就会悄悄朝自己想要的答案去论证；而中立 runner 跑出的结果，可能反而**不利于**发单的那一方——这才叫举证，不是修辞。定价随之收口：只有 verified 的 task 才配得上最高档的牌，光喊招式名、背后什么都没跑的，按裸修辞算最低档。嘴上漂亮，终于比证明它更便宜了。
+于是辩手不再单打独斗：一个点需要真功夫时——把关税冲击推演到 CPI、拿一只票跟它真正的同行比——它不自己动手，而是发一张 task 单，由**中立的执行员（runner）**照固定 playbook 跑完、返回结构化结果。性质上像极了网页版对话先跑个脚本再回答：对话 LLM 连不算难的数学都算不稳，task 就是当场召一个现成的经济学模型来，算完把数端回来——而不是指望它拍脑袋寻思。为什么非得走 task？**为了中立**：判断一交给利益相关方，它就会悄悄朝自己想要的答案去论证；而中立 runner 跑出的结果，可能反而**不利于**发单的那一方——这才叫举证，不是修辞。定价随之收口——和挂牌定价同一套逻辑：**强度是执行结果，不是嗓门大小**。只有 verified 的 task 才配得上最高档的牌，光喊招式名、背后什么都没跑的，按裸修辞算最低档。嘴上漂亮，终于比证明它更便宜了。
 
 克制和机制一样重要：**不是什么都变成 task**。查一个数字不必召来一支施工队；一个为看时间都要开正式工单的系统，和一个从不查证的系统，一样是坏的。
 
@@ -454,7 +420,7 @@ BP 自己也踩过坑，最阴的一个是：**后验分数会骗人**。有一�
 
 MU 那一期是个标本：它把整条往返路径几乎按数字喊了出来——跌进 880 多、再弹回 930 附近，全在事情发生之前就说中了。然后，它给这份报告落款：**HOLD，仓位 N/A。** 一张完美的海图，却没人掌舵。
 
-这道缝隙教会我一件绕了一年的事：**分析和操作是两个不同的层面，上面那层再完美，也不自动长出下面那层。** 把市场看对，是一张*地图*；从地图上定出当前唯一最优的那一步——价格在哪、赔率赔多少、走错的代价是什么——是另一桩*导航*的活。这反而算好消息：我终于分清了一个稀泥 HOLD 到底是没*看懂*、还是看懂了没*动手*——这两者要的是相反的修法。摆在面前的活不是"让它更聪明"，是补上那层把正确判读转成下定决心动作的翻译——并且别再把两样当一件事打分：一张漂亮的地图最后落成 HOLD，不该因为地图漂亮就及格。
+这道缝隙教会我一件绕了一年的事：**分析和操作是两个不同的层面，上面那层再完美，也不自动长出下面那层。** 把市场看对，是一张*地图*；从地图上定出当前唯一最优的那一步——价格在哪、赔率赔多少、走错的代价是什么——是另一桩*导航*的活。这个项目的原罪是"顶着分析师的嘴、做着赌徒的手"（🗣️），而这是它更隐蔽的表亲、晚一个阶段：*看*得像个高手，然后就……杵在那儿。这反而算好消息：我终于分清了一个稀泥 HOLD 到底是没*看懂*、还是看懂了没*动手*——这两者要的是相反的修法。摆在面前的活不是"让它更聪明"，是补上那层把正确判读转成下定决心动作的翻译——并且别再把两样当一件事打分：一张漂亮的地图最后落成 HOLD，不该因为地图漂亮就及格。
 
 ## 🧩 无脑 HOLD 不是什么深层缺陷——是重构时漏掉了一条规则
 
@@ -473,6 +439,12 @@ MU 那一期是个标本：它把整条往返路径几乎按数字喊了出来�
 说个一直没写的秘密：当年 2 升 3、给系统加支点的那几天，也是各种出 bug、精度急剧下降，修了好几天才修好。这次 3 回 2、换记账制，一模一样：刚上线那批的表现比它要取代的许可制**还差**，又是连修好几天——直到最近，能力才追平当年的三人阵容，而新架构的上限明显更高（下一册后验还没出炉，但盘面表现已经看得出来）。两次升级，同一条曲线：**先跌进沟，再爬出来——爬出来之后的天花板，才是新架构的真实高度。**
 
 这给复盘立了条规矩：刚换轨那几天的烂数据，不能当"方向错了"的证据。**J 曲线的谷底和死路的谷底，长得一模一样**，分辨它们只能看你修的是 bug、还是修不动的结构。所以每次大改后：停一停手，让它攒够干净样本，再下结论。这条和"能稳定运转的系统，背后都有一段没人看见的喘不上气"，是同一条定律的两次现身。
+
+## 🪴 先长出雏形，才配得上顶层设计
+
+这次同时开着 Claude 和 Codex 会诊、把整套 AI 推倒重构，越搞越觉得这个过程眼熟。一开始根本不知道最终该长什么样：今天搞 ensemble，明天设计角色立场，后天把 evidence 和 task 拆成两层，再后来连技能都分出了理论和执行——没有谁规划过这张图，它是**自发长成的**：层次分明，但粗糙。可偏偏要到这一步，顶层设计才第一次成为可能——对着雏形看它还缺什么、哪里粗糙、哪里冗余，再动手重新拆分与合并。顺序不能反：**不是设计产生了系统，是系统先长出来，才配得上被设计。**
+
+世界模型好像也在走同一条路。GPT-4 刚出来时 LeCun 就说光靠语言不够、必须有世界模型——方向没错，可真实世界复杂到不可能靠顶层设计一步拍出完整正确的架构。反而是现在：推理、图像视频、VLA、机器人、空间智能各自一点点突破，能力一块块拼起来之后，一个完整的世界模型该长什么样才开始看得清——李飞飞团队做 spatial intelligence，感觉也是沿着这条路在往前走。一个小小的交易框架和一个大领域撞上同一条规律，大概不是巧合。
 
 ---
 

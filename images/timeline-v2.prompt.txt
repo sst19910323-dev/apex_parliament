@@ -1,0 +1,30 @@
+Edit the supplied timeline infographic (timeline-v2.png). The two newest milestones, numbered 10 and 11, currently appear only as bare date markers with an icon and a one-line label. Turn each of them into a FULL milestone card in exactly the same format as the nine existing cards: a thin rounded outline, a colored heading line, a title line, a line-art icon, a short bullet list, and an italic blue bottom caption.
+
+Keep the existing visual style: white background, navy APEX QUANT heading, blue subtitle and blue timeline, thin outlines, line-art icons, the same fonts and sizes as the existing cards. Keep ALL original nine milestones (October 2025 through August 2026), their numbers, dates, cards, text and illustrations intact. Keep the infrastructure footer and the "Cognitive Evolution" sidebar exactly as they are (the sidebar already ends with "Restructure"). Keep the wide horizontal composition and all eleven chronological markers in order. Keep the main heading APEX QUANT, because the renaming has not happened.
+
+Change ONLY the two newest milestones:
+
+Marker 10 — date "2026-09-30".
+Heading (blue, same style as "PHASE 8"): PHASE 9
+Title: Layered Rebuild
+Icon: a small blue stacked-layers icon (three or four offset layers), line-art.
+Bullets (keep these short, same bullet style as the other cards):
+• Small releases accumulated into a natural layered structure
+• Full rebuild of the trading-cognition system along those layers
+• One judgment chain: facts → understanding → mentality → operation → score
+• Arbiter silent during debate, then draft ruling + objection rounds
+• One rule tree and one protocol shared by both engines
+Italic blue caption at the bottom: The system grew a shape worth designing.
+
+Marker 11 — date "2026-10-07".
+Heading (same style as "TURNING POINT", but in a calm dark-blue or orange tone, not red): FUTURE IDENTITY
+Title: Equipoise（均势）
+Icon: a small blue balanced-scales icon, line-art, both pans level.
+Bullets:
+• "Apex Quant" was Gemini's name for an idea that had no style yet
+• The project has since grown its own: balance as performance
+• Future name chosen: Equipoise（均势）, logo designed
+• Rename pending — everything changes at once
+Italic blue caption at the bottom: The system earned a name of its own.
+
+Render the Chinese characters 均势 correctly in a clean sans-serif, the same size as the surrounding English. Size the two new cards to match the width and height of the existing cards so the whole row aligns; do not let them overlap the sidebar. Do not add extra headings, quotes, paragraphs, or any other new content anywhere. Make a finished, legible wide PNG infographic with all content inside the canvas.
